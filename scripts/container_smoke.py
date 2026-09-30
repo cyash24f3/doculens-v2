@@ -93,7 +93,7 @@ def main():
         assert first_job["state"] == "completed"
         result = search()
         assert "30 calendar days" in json.dumps(result["results"])
-        first_chunk = result["results"][0]["id"]
+        first_chunk = result["results"][0]["evidence"]["id"]
         evidence = client.get(
             f"/api/v1/evidence/{first_chunk}", params={"corpus": "private"}, headers=headers
         )
@@ -130,7 +130,7 @@ def main():
         report["active_private_version_after_restart"] = second["version_id"]
         report["checks"].append("sample IDs and uploaded active content survive API restart")
         final_result = search()
-        final_chunk = final_result["results"][0]["id"]
+        final_chunk = final_result["results"][0]["evidence"]["id"]
         trace = final_result["request_id"]
         removed = client.delete(
             f"/api/v1/documents/{doc_id}", params={"corpus": "private"}, headers=headers

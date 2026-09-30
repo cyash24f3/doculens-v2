@@ -13,7 +13,7 @@ Status reflects execution, not implementation intent. All quality results are bo
 | 7. Replace/remove without stale or partial publication | verified | Browser replacement/failed-replacement screenshots and smoke log; worker lease/reclaim/atomic rollback/obsolete-sequence tests; deletion purges raw files, chunks and associated traces. |
 | 8. Meaningful tests and frozen benchmark denominators | verified | 37 passing tests with local PostgreSQL configured; Ruff/format/mypy; 200-intent dataset, split v2 and `evaluation.md`; CI configuration uses no paid provider. |
 | 9. Actual comparisons, failures, latency and limitations | verified | Retrieval dev/test reports, cluster bootstrap; answer report with one unnecessary abstention; saved 3B failures/7B condition omission; `load.json`, `ingestion-profile.json`; `experiment-decisions.md`. |
-| 10. Containers with persistence/access controls | implemented but unverified | Final image build/start has passed; final authenticated HTTP lifecycle and API-restart persistence record are pending. PostgreSQL/pgvector isolated-schema integration passed. |
+| 10. Containers with persistence/access controls | verified | Final nonroot Docker image built/started; `evidence/docker-smoke.json` records actual upload/search/evidence, replacement, parser failure, API restart with sample/uploaded content preserved, and deletion/trace purge. PostgreSQL/pgvector isolated-schema integration passed. |
 
 ## Additional checks and limits
 

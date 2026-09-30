@@ -11,6 +11,8 @@ Built and verified on a Mac M5 Air with 24 GB RAM and 1 TB storage. Development 
 From a checkout, with [uv](https://docs.astral.sh/uv/) installed:
 
 ```bash
+git clone https://github.com/cyash24f3/doculens-v2.git
+cd doculens-v2
 uv sync --frozen --python 3.12
 uv run doculens demo
 ```
@@ -161,3 +163,5 @@ Core limits: text-bearing PDFs only; OCR is reported as required. Exact vector s
 Highest-value next improvement: create a fresh independently human-authored/reviewed holdout, calibrate the semantic judge on a stratified sample, then test condition preservation on development questions. OCR, approximate indexing, multi-turn memory and enterprise authentication are outside this core.
 
 Project code and authored fixtures use [MIT](LICENSE). Included Python documentation retains its [PSF license](data/public/PYTHON-LICENSE.txt); model weights are downloaded separately and are not committed. See [third-party notices](THIRD_PARTY_NOTICES.md).
+
+This complete engineering build is published as `doculens-v2`. The [earlier DocuLens implementation](https://github.com/cyash24f3/doculens) and its existing deployment remain separate. Its CLI, database schema and deployment entry point differ; this repository does not claim an automatic upgrade of that database. [Version boundary](docs/version-boundary.md).

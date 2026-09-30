@@ -7,3 +7,5 @@ Observed tools: uv 0.12.1, Docker client 29.6.2, Apple ARM64. `docker version` f
 Decisions: new Python 3.12/FastAPI modular monolith, SQLAlchemy/Alembic, PostgreSQL/pgvector canonical deployment. SQLite is an explicit small-corpus local/CI adapter using exact NumPy cosine search; it is not described as pgvector verification. Jinja2 plus vanilla JavaScript. Database-backed ingestion jobs; a separate worker process. Fixture embeddings and scripted demo generation are named fixtures and excluded from model-quality claims.
 
 The model cards and official documentation were inspected. MiniLM's 256 word-piece input limit motivates 180-token chunks with 32-token overlap rather than the suggested 300–500 starting range. Actual loaded limits are checked at runtime. Model commit revisions are pinned. No approximate vector index is included.
+
+Later GitHub publication discovered an earlier remote project that was not present in the supplied checkout. It is preserved separately; see `version-boundary.md` for the inspected revision and publication decision.

@@ -1,0 +1,186 @@
+{
+  "url": "http://127.0.0.1:8001",
+  "checks": [
+    "anonymous private/developer access denied",
+    "authenticated upload, worker ready, scoped search and evidence",
+    "replacement activates atomically and history retained",
+    "corrupt replacement fails while previous active remains",
+    "sample IDs and uploaded active content survive API restart",
+    "deletion removes evidence and relevant traces"
+  ],
+  "jobs": [
+    {
+      "id": "3dbff992-db1f-4d60-a815-b784fe0f2227",
+      "version_id": "a9d409ea-a89c-4ee9-b2eb-44b44f825f98",
+      "state": "completed",
+      "stage": "completed",
+      "attempts": 1,
+      "lease_until": null,
+      "done": 1,
+      "total": 1,
+      "error_code": null,
+      "error_message": null,
+      "timings": {
+        "extraction_ms": 6.684375000077125,
+        "chunking_ms": 0.21241699960228289,
+        "embedding_ms": 2.553791000536876,
+        "total_before_activation_ms": 12.917875000312051,
+        "activation_before_commit_ms": 4.38016600037372
+      },
+      "created_at": 1790770822.2006912
+    },
+    {
+      "id": "f7fd6924-947f-49bb-a8d4-0855ee9204a3",
+      "version_id": "cf43bf1e-5772-4902-b3ec-98f399bdff61",
+      "state": "completed",
+      "stage": "completed",
+      "attempts": 1,
+      "lease_until": null,
+      "done": 1,
+      "total": 1,
+      "error_code": null,
+      "error_message": null,
+      "timings": {
+        "extraction_ms": 4.853708000155166,
+        "chunking_ms": 0.10966700028802734,
+        "embedding_ms": 2.2697080003126757,
+        "total_before_activation_ms": 11.010707999957958,
+        "activation_before_commit_ms": 4.8475410003447905
+      },
+      "created_at": 1790770823.2474668
+    },
+    {
+      "id": "1d5dfed3-f4ce-4d24-b2a1-46fd7090de02",
+      "version_id": "0c5b262d-2e9b-4717-acc8-4bdc474fdcb0",
+      "state": "failed",
+      "stage": "extracting",
+      "attempts": 1,
+      "lease_until": null,
+      "done": 0,
+      "total": null,
+      "error_code": "corrupt_pdf",
+      "error_message": "PDF parsing failed; check file integrity",
+      "timings": {},
+      "created_at": 1790770824.2967231
+    }
+  ],
+  "readiness": {
+    "status": "ready",
+    "database": "available",
+    "models": "initialized",
+    "generation_mode": "fixture",
+    "provider_connectivity": "not_applicable"
+  },
+  "sample_document_ids_survived_api_restart": [
+    "04ba1e80-5434-4db1-bbd9-2290dc32f11f",
+    "1f18d54e-1a9e-42de-b811-50b2f9748fc9",
+    "3f26fb56-743c-417a-9fe6-0928f54953c0",
+    "4177eb89-6b28-46ed-ba2a-1bf39b437f5d",
+    "4eb8cd03-a82d-4d31-ad51-5af7b7dfa360",
+    "7bd7dfdc-c786-4b2e-9ded-14b39de5e5fd",
+    "7d766c72-067b-435f-8382-7faf632fcc8c",
+    "8a891a42-3b75-422b-a872-8f428d8b9bf6",
+    "8ad513ab-ff5a-4443-9ad7-bf469f090257",
+    "a614dcce-8b6f-4448-b1a9-a8592d4c6c75",
+    "a79f2a8e-7800-4269-85c7-506dd920693a",
+    "aba92429-1d17-4c09-aa1d-d957d46f110e",
+    "b6b315c8-cf3b-41eb-8e82-451cf7effe91",
+    "c9288de0-cd98-4f6e-aa1b-452142acf771",
+    "c98bf81b-e0fb-42c0-b8b6-0895f26b394e",
+    "d564a868-07b6-49aa-ad05-9ed5102a5f16",
+    "d7a7d645-be70-40f6-963b-7ef057280295",
+    "e5a282d6-50c2-4372-abcc-1e3b04045d13",
+    "e7ed8caa-46f9-4a76-a9a6-ddca5903bc96",
+    "f4b8f261-c927-4abc-9fbb-973687fbb311"
+  ],
+  "active_private_version_after_restart": "cf43bf1e-5772-4902-b3ec-98f399bdff61",
+  "containers": [
+    {
+      "Command": "\"doculens serve --ho\u2026\"",
+      "CreatedAt": "2026-09-30 17:47:02 +0530 IST",
+      "ExitCode": 0,
+      "Health": "starting",
+      "ID": "0b910e442462",
+      "Image": "doculens:local",
+      "Labels": "com.docker.compose.container-number=1,com.docker.compose.project=doculens,com.docker.compose.project.working_dir=/Users/cyash/Documents/ChatGPT/DocuLens,desktop.docker.io/ports/8000/tcp=127.0.0.1:8001,com.docker.compose.depends_on=seed:service_completed_successfully:false,com.docker.compose.image=sha256:ece3cb907caa06f33ee29b2558aff47d23ca6239d8b2b4207dfee41d90e47d56,com.docker.compose.oneoff=False,com.docker.compose.project.config_files=/Users/cyash/Documents/ChatGPT/DocuLens/compose.yaml,com.docker.compose.replace=api-1,com.docker.compose.service=api,com.docker.compose.version=5.3.1,desktop.docker.io/ports.scheme=v2,com.docker.compose.config-hash=405a9dbaa1a4d813bad10ee415e61abc2841967bf4ed4b3292548046ed3883f0",
+      "LocalVolumes": "3",
+      "Mounts": "doculens_resul\u2026,doculens_files,doculens_models",
+      "Name": "doculens-api-1",
+      "Names": "doculens-api-1",
+      "Networks": "doculens_default",
+      "Ports": "127.0.0.1:8001->8000/tcp",
+      "Project": "doculens",
+      "Publishers": [
+        {
+          "URL": "127.0.0.1",
+          "TargetPort": 8000,
+          "PublishedPort": 8001,
+          "Protocol": "tcp"
+        }
+      ],
+      "RunningFor": "3 minutes ago",
+      "Service": "api",
+      "Size": "0B",
+      "State": "running",
+      "Status": "Up 2 seconds (health: starting)"
+    },
+    {
+      "Command": "\"docker-entrypoint.s\u2026\"",
+      "CreatedAt": "2026-09-30 14:53:09 +0530 IST",
+      "ExitCode": 0,
+      "Health": "healthy",
+      "ID": "d2630d53c314",
+      "Image": "pgvector/pgvector:0.8.2-pg17@sha256:feb68f4f15446397d8cac7f4fe48fe4586de83160d1fc48b46283312d1a33966",
+      "Labels": "com.docker.compose.oneoff=False,com.docker.compose.project.config_files=/Users/cyash/Documents/ChatGPT/DocuLens/compose.yaml,com.docker.compose.project.working_dir=/Users/cyash/Documents/ChatGPT/DocuLens,com.docker.compose.service=db,desktop.docker.io/ports.scheme=v2,desktop.docker.io/ports/5432/tcp=127.0.0.1:5433,com.docker.compose.config-hash=496e2ec225b1bc46141a77108e9992625808dbf8681f103e6d0da50e5fb3184b,com.docker.compose.container-number=1,com.docker.compose.depends_on=,com.docker.compose.image=sha256:feb68f4f15446397d8cac7f4fe48fe4586de83160d1fc48b46283312d1a33966,com.docker.compose.project=doculens,com.docker.compose.version=5.3.1",
+      "LocalVolumes": "1",
+      "Mounts": "doculens_datab\u2026",
+      "Name": "doculens-db-1",
+      "Names": "doculens-db-1",
+      "Networks": "doculens_default",
+      "Ports": "127.0.0.1:5433->5432/tcp",
+      "Project": "doculens",
+      "Publishers": [
+        {
+          "URL": "127.0.0.1",
+          "TargetPort": 5432,
+          "PublishedPort": 5433,
+          "Protocol": "tcp"
+        }
+      ],
+      "RunningFor": "3 hours ago",
+      "Service": "db",
+      "Size": "0B",
+      "State": "running",
+      "Status": "Up 3 hours (healthy)"
+    },
+    {
+      "Command": "\"doculens worker\"",
+      "CreatedAt": "2026-09-30 17:47:02 +0530 IST",
+      "ExitCode": 0,
+      "Health": "",
+      "ID": "86b0097be739",
+      "Image": "doculens:local",
+      "Labels": "com.docker.compose.replace=worker-1,com.docker.compose.service=worker,desktop.docker.io/ports.scheme=v2,com.docker.compose.config-hash=deea291476564dcd6ebd8267560e5c8e7d7fbb6b00f3f393f993281e13633278,com.docker.compose.image=sha256:ece3cb907caa06f33ee29b2558aff47d23ca6239d8b2b4207dfee41d90e47d56,com.docker.compose.project=doculens,com.docker.compose.version=5.3.1,com.docker.compose.container-number=1,com.docker.compose.depends_on=seed:service_completed_successfully:false,com.docker.compose.oneoff=False,com.docker.compose.project.config_files=/Users/cyash/Documents/ChatGPT/DocuLens/compose.yaml,com.docker.compose.project.working_dir=/Users/cyash/Documents/ChatGPT/DocuLens",
+      "LocalVolumes": "3",
+      "Mounts": "doculens_files,doculens_models,doculens_resul\u2026",
+      "Name": "doculens-worker-1",
+      "Names": "doculens-worker-1",
+      "Networks": "doculens_default",
+      "Ports": "8000/tcp",
+      "Project": "doculens",
+      "Publishers": [
+        {
+          "URL": "",
+          "TargetPort": 8000,
+          "PublishedPort": 0,
+          "Protocol": "tcp"
+        }
+      ],
+      "RunningFor": "3 minutes ago",
+      "Service": "worker",
+      "Size": "0B",
+      "State": "running",
+      "Status": "Up 3 minutes"
+    }
+  ]
+}
