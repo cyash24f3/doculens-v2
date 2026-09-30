@@ -1,0 +1,248 @@
+{
+  "workspaceId": "tea-d9ofkdp42hec739b8gog",
+  "serviceId": "srv-daugf7flot8c73b22v90",
+  "deployId": "dep-daugf87lot8c73b232cg",
+  "commit": "072d878921e1570e3f732d5dab57544d44617251",
+  "url": "https://yash-doculens-v2.onrender.com",
+  "status": "live",
+  "verified_plan": "free",
+  "region": "singapore",
+  "autoDeploy": "yes",
+  "health_check": "Native connector created service with TCP startup check; readiness HTTP endpoint tested independently. Blueprint specifies HTTP readiness for reproductions.",
+  "creation_response": {
+    "deployId": "dep-daugf87lot8c73b232cg",
+    "service": {
+      "autoDeploy": "yes",
+      "autoDeployTrigger": "commit",
+      "branch": "main",
+      "createdAt": "2026-09-30T12:59:11.314244Z",
+      "dashboardUrl": "https://dashboard.render.com/web/srv-daugf7flot8c73b22v90",
+      "id": "srv-daugf7flot8c73b22v90",
+      "name": "yash-doculens-v2",
+      "notifyOnFail": "default",
+      "ownerId": "tea-d9ofkdp42hec739b8gog",
+      "repo": "https://github.com/cyash24f3/doculens-v2",
+      "rootDir": "",
+      "serviceDetails": {
+        "buildPlan": "starter",
+        "cache": {
+          "profile": "no-cache"
+        },
+        "env": "python",
+        "envSpecificDetails": {
+          "buildCommand": "pip install --require-hashes -r requirements-render.lock && pip install --no-deps -e . && python scripts/prepare_render.py",
+          "startCommand": "python scripts/prepare_render.py --serve"
+        },
+        "healthCheckPath": "",
+        "ipAllowList": [
+          {
+            "cidrBlock": "0.0.0.0/0",
+            "description": "everywhere"
+          }
+        ],
+        "maintenanceMode": {
+          "enabled": false,
+          "uri": ""
+        },
+        "numInstances": 1,
+        "openPorts": [],
+        "plan": "free",
+        "previews": {
+          "generation": "off"
+        },
+        "pullRequestPreviewsEnabled": "no",
+        "region": "singapore",
+        "renderSubdomainPolicy": "enabled",
+        "runtime": "python",
+        "sshAddress": "srv-daugf7flot8c73b22v90@ssh.singapore.render.com",
+        "url": "https://yash-doculens-v2.onrender.com"
+      },
+      "slug": "yash-doculens-v2",
+      "suspended": "not_suspended",
+      "suspenders": [],
+      "type": "web_service",
+      "updatedAt": "2026-09-30T12:59:11.314244Z"
+    }
+  },
+  "metrics_response": {
+    "resourceId": "srv-daugf7flot8c73b22v90",
+    "timeRange": {
+      "start": "2026-09-30T13:00:00Z"
+    },
+    "metrics": [
+      {
+        "type": "memory_usage",
+        "data": [
+          {
+            "labels": [
+              {
+                "field": "instance",
+                "value": "srv-daugf7flot8c73b22v90-788kp"
+              },
+              {
+                "field": "service",
+                "value": "srv-daugf7flot8c73b22v90"
+              },
+              {
+                "field": "resource",
+                "value": "srv-daugf7flot8c73b22v90"
+              }
+            ],
+            "unit": "bytes",
+            "values": [
+              {
+                "timestamp": "2026-09-30T13:01:00Z",
+                "value": 116953090
+              },
+              {
+                "timestamp": "2026-09-30T13:02:00Z",
+                "value": 186167300
+              },
+              {
+                "timestamp": "2026-09-30T13:03:00Z",
+                "value": 186167300
+              },
+              {
+                "timestamp": "2026-09-30T13:04:00Z",
+                "value": 277348350
+              },
+              {
+                "timestamp": "2026-09-30T13:05:00Z",
+                "value": 280231940
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "memory_limit",
+        "data": [
+          {
+            "labels": [
+              {
+                "field": "service",
+                "value": "srv-daugf7flot8c73b22v90"
+              },
+              {
+                "field": "resource",
+                "value": "srv-daugf7flot8c73b22v90"
+              },
+              {
+                "field": "instance",
+                "value": "srv-daugf7flot8c73b22v90-788kp"
+              }
+            ],
+            "unit": "bytes",
+            "values": [
+              {
+                "timestamp": "2026-09-30T13:01:00Z",
+                "value": 536870900
+              },
+              {
+                "timestamp": "2026-09-30T13:02:00Z",
+                "value": 536870900
+              },
+              {
+                "timestamp": "2026-09-30T13:03:00Z",
+                "value": 536870900
+              },
+              {
+                "timestamp": "2026-09-30T13:04:00Z",
+                "value": 536870900
+              },
+              {
+                "timestamp": "2026-09-30T13:05:00Z",
+                "value": 536870900
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "cpu_usage",
+        "data": [
+          {
+            "labels": [
+              {
+                "field": "instance",
+                "value": "srv-daugf7flot8c73b22v90-788kp"
+              },
+              {
+                "field": "service",
+                "value": "srv-daugf7flot8c73b22v90"
+              },
+              {
+                "field": "resource",
+                "value": "srv-daugf7flot8c73b22v90"
+              }
+            ],
+            "unit": "cpu",
+            "values": [
+              {
+                "timestamp": "2026-09-30T13:02:00Z",
+                "value": 0.01112405
+              },
+              {
+                "timestamp": "2026-09-30T13:03:00Z",
+                "value": 0.0013343
+              },
+              {
+                "timestamp": "2026-09-30T13:04:00Z",
+                "value": 0.032960765
+              },
+              {
+                "timestamp": "2026-09-30T13:05:00Z",
+                "value": 0.0027025333
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "cpu_limit",
+        "data": [
+          {
+            "labels": [
+              {
+                "field": "instance",
+                "value": "srv-daugf7flot8c73b22v90-788kp"
+              },
+              {
+                "field": "service",
+                "value": "srv-daugf7flot8c73b22v90"
+              },
+              {
+                "field": "resource",
+                "value": "srv-daugf7flot8c73b22v90"
+              }
+            ],
+            "unit": "cpu",
+            "values": [
+              {
+                "timestamp": "2026-09-30T13:01:00Z",
+                "value": 0.15
+              },
+              {
+                "timestamp": "2026-09-30T13:02:00Z",
+                "value": 0.15
+              },
+              {
+                "timestamp": "2026-09-30T13:03:00Z",
+                "value": 0.15
+              },
+              {
+                "timestamp": "2026-09-30T13:04:00Z",
+                "value": 0.15
+              },
+              {
+                "timestamp": "2026-09-30T13:05:00Z",
+                "value": 0.15
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "runtime_limits": "Sample-only disposable SQLite/file storage; administrator and private uploads disabled. Genuine pinned quantized ONNX retrieval and free Groq generation."
+}

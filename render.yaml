@@ -1,7 +1,7 @@
 # Genuine ONNX retrieval + free Groq answers. No private uploads on disposable disk.
 services:
   - type: web
-    name: doculens-v2
+    name: yash-doculens-v2
     runtime: python
     plan: free
     region: singapore

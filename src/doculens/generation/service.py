@@ -1,5 +1,6 @@
 import time
 
+import tiktoken
 from pydantic import ValidationError
 
 from doculens.errors import DomainError
@@ -46,6 +47,7 @@ class Answerer:
             "context_input_tokens_estimate": context.input_tokens_estimate,
             "stages": search.stages,
             "validation_failures": [],
+            "repair_version": "structural-feedback-v2",
         }
         if self.provider is None:
             return {
@@ -93,7 +95,14 @@ class Answerer:
                 break
             except (ValidationError, DomainError) as e:
                 code = e.code if isinstance(e, DomainError) else "invalid_generated_output"
-                trace["validation_failures"].append({"attempt": attempt + 1, "code": code})
+                reason = (
+                    e.message
+                    if isinstance(e, DomainError)
+                    else "Generated JSON did not match the typed schema"
+                )
+                trace["validation_failures"].append(
+                    {"attempt": attempt + 1, "code": code, "reason": reason}
+                )
                 if (
                     code == "provider_unavailable"
                     or attempt >= self.settings.provider_repair_attempts
@@ -108,9 +117,28 @@ class Answerer:
                 # Do not echo malicious provider content or raw validation text in the repair prompt.
                 repair = {
                     "role": "system",
-                    "content": "Previous output failed structural validation. Return valid schema JSON with only supplied IDs and exact quotes.",
+                    "content": (
+                        "Previous output failed structural validation: "
+                        + reason
+                        + ". JSON only: all claims cite supplied IDs; conflict claims cite two different passages; quotes exact or empty."
+                    ),
                 }
-                # The initial context reserves 64 tokens; the short repair uses that reserve.
+                repair_tokens = (
+                    len(tiktoken.get_encoding("cl100k_base").encode(repair["content"])) + 8
+                )
+                if (
+                    context.input_tokens_estimate + repair_tokens + self.settings.answer_tokens
+                    > self.settings.context_tokens
+                ):
+                    trace["repair_skipped"] = "context_budget"
+                    base.update(
+                        status="invalid_generated_output",
+                        answer="The generated response failed validation. Please retry.",
+                    )
+                    break
+                trace["repair_input_tokens_estimate"] = (
+                    context.input_tokens_estimate + repair_tokens
+                )
                 messages = list(context.messages) + [repair]
         base["usage"] = (
             {"calls": usage_records}

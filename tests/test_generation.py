@@ -136,6 +136,51 @@ def test_supported_conflict_and_empty_evidence(system, ingest):
     assert answer["status"] == "insufficient_evidence" and stub.calls == 0
 
 
+def test_repair_identifies_missing_conflict_citations_without_echoing_output(system, ingest):
+    settings, repo, _, _, retriever = system
+    ingest("Warranty lasts 12 months.")
+    ingest("Warranty lasts 24 months.", title="Other")
+    search = retriever.search(repo.snapshot("sample"), "Warranty", "bm25", 5)
+    ids = [hit.evidence.id for hit in search.hits]
+    valid = Proposal(
+        status="conflicting_evidence",
+        claims=[Claim(text="The policies disagree.", evidence_ids=ids, quotes=[])],
+        missing_information=[],
+    )
+
+    class Sequence:
+        messages = []
+
+        def complete(self, messages):
+            self.messages.append(messages)
+            text = (
+                '{"status":"conflicting_evidence","claims":[],"missing_information":["UNTRUSTED_OUTPUT_SENTINEL"]}'
+                if len(self.messages) == 1
+                else valid.model_dump_json()
+            )
+            return Completion(text, "test-model", None, 1)
+
+    provider = Sequence()
+    answer, trace = Answerer(settings, provider).answer("Warranty", search, "repair-test")
+    assert answer["status"] == "conflicting_evidence" and len(answer["citations"]) == 2
+    assert len(provider.messages) == 2
+    repair = provider.messages[1][-1]["content"]
+    assert "at least two passages" in repair and "UNTRUSTED_OUTPUT_SENTINEL" not in repair
+    assert trace["repair_input_tokens_estimate"] + settings.answer_tokens <= settings.context_tokens
+
+    # A context with no room for feedback must not cause a second provider call.
+    tight = settings.model_copy(
+        update={
+            "context_tokens": trace["context_input_tokens_estimate"] + settings.answer_tokens + 1
+        }
+    )
+    provider = Sequence()
+    provider.messages = []
+    answer, trace = Answerer(tight, provider).answer("Warranty", search, "tight-budget")
+    assert answer["status"] == "invalid_generated_output" and len(provider.messages) == 1
+    assert trace["repair_skipped"] == "context_budget"
+
+
 def test_real_http_adapter_envelope_retry_timeout_and_bounds(system):
     settings, *_ = system
     settings = settings.model_copy(

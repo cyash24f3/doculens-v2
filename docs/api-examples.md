@@ -40,7 +40,7 @@ curl -X POST "$BASE_URL/api/v1/answers" -H 'Content-Type: application/json' \
   -d '{"question":"Which return conditions apply?","method":"hybrid","corpus":"private"}'
 ```
 
-Live provider mode requires admin credentials even for sample generation. Fixture responses explicitly include `generation_mode=fixture` and `model=scripted-demo-fixture-v1`. Disabled generation returns `provider_unavailable` while search remains available. Answer statuses also include answered, insufficient_evidence, conflicting_evidence and invalid_generated_output. Responses include request/corpus IDs, method, source versions, citations, actual available timings and nullable usage.
+Provider mode requires admin credentials by default, including sample generation. The hosted service explicitly opts into bounded anonymous sample answers; private generation remains forbidden. Public rate limits return HTTP 429 with `error.code=public_answer_quota`. Fixture responses explicitly include `generation_mode=fixture` and `model=scripted-demo-fixture-v1`. Disabled generation returns `provider_unavailable` while search remains available. Answer statuses also include answered, insufficient_evidence, conflicting_evidence and invalid_generated_output. Responses include request/corpus IDs, method, source versions, citations, actual available timings and nullable usage.
 
 ```bash
 export CHUNK_ID='<id from a result or citation>'

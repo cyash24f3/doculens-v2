@@ -27,8 +27,10 @@ def cloud_settings() -> Settings:
         cpu_threads=1,
         inference_concurrency=1,
         provider_concurrency=1,
+        provider_temperature=0,
+        context_tokens=3072,
         provider_retries=0,
-        provider_repair_attempts=0,
+        provider_repair_attempts=1,
     )
     if settings.generation_mode == "fixture":
         raise ValueError(

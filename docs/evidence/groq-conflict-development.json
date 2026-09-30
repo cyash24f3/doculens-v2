@@ -1,0 +1,498 @@
+{
+  "answer": {
+    "request_id": "groq-conflict-development",
+    "corpus_revision": 21,
+    "corpus_manifest": "2cfc4ee8e9a5cadaf063821df1cf2b125e9f503e093c41f1d797d811e24061ea",
+    "method": "hybrid",
+    "generation_mode": "provider",
+    "model": "openai/gpt-oss-20b",
+    "answer": "The Harbor H10 warranty covers manufacturing defects for 12 months from purchase.\n\nThe Harbor H10 warranty covers manufacturing defects for 24 months from purchase.",
+    "claims": [
+      {
+        "text": "The Harbor H10 warranty covers manufacturing defects for 12 months from purchase.",
+        "evidence_ids": [
+          "4747078735c328a8656d809773dca3176300000e8e58bceaf6b0206dba67c75f"
+        ],
+        "quotes": [
+          {
+            "evidence_id": "4747078735c328a8656d809773dca3176300000e8e58bceaf6b0206dba67c75f",
+            "span": "The Harbor H10 warranty covers manufacturing defects for 12 months from purchase."
+          }
+        ]
+      },
+      {
+        "text": "The Harbor H10 warranty covers manufacturing defects for 24 months from purchase.",
+        "evidence_ids": [
+          "cd612d6021d3325724606554cfa007a799448fd291f80a4bfdf9e97e1ea94cc7"
+        ],
+        "quotes": [
+          {
+            "evidence_id": "cd612d6021d3325724606554cfa007a799448fd291f80a4bfdf9e97e1ea94cc7",
+            "span": "The Harbor H10 warranty covers manufacturing defects for 24 months from purchase."
+          }
+        ]
+      }
+    ],
+    "citations": [
+      {
+        "id": "4747078735c328a8656d809773dca3176300000e8e58bceaf6b0206dba67c75f",
+        "document_id": "5e096031-d635-49b6-ad8d-c41620612394",
+        "version_id": "24f1c45c-04a7-428e-9172-fc027a7df637",
+        "title": "Harbor retail warranty",
+        "version": "2026.1",
+        "effective_date": "2026-09-01",
+        "source_kind": "markdown",
+        "source_locator": null,
+        "text": "# Harbor retail warranty\n\nThe Harbor H10 warranty covers manufacturing defects for 12 months from purchase.",
+        "section": "Harbor retail warranty",
+        "page_start": null,
+        "page_end": null,
+        "start": 0,
+        "end": 107,
+        "ordinal": 0,
+        "token_count": 20,
+        "content_sha256": "8727eee0d89ebfac6228f2a0c90f622ef097c0f93975b87153ddca6e946c27b0",
+        "claim_indices": [
+          0
+        ],
+        "quotes": [
+          "The Harbor H10 warranty covers manufacturing defects for 12 months from purchase."
+        ]
+      },
+      {
+        "id": "cd612d6021d3325724606554cfa007a799448fd291f80a4bfdf9e97e1ea94cc7",
+        "document_id": "cdfd4255-2cc8-42dd-adff-9487dc10723e",
+        "version_id": "a05a2e61-30e3-4bb2-8b30-95d9b86f2e1a",
+        "title": "Harbor service warranty",
+        "version": "2026.1",
+        "effective_date": "2026-09-01",
+        "source_kind": "markdown",
+        "source_locator": null,
+        "text": "# Harbor service warranty\n\nThe Harbor H10 warranty covers manufacturing defects for 24 months from purchase.",
+        "section": "Harbor service warranty",
+        "page_start": null,
+        "page_end": null,
+        "start": 0,
+        "end": 108,
+        "ordinal": 0,
+        "token_count": 20,
+        "content_sha256": "be89505d096547a93cb5f877d3b6e700b26b6105b52a3f28ede490aa31e0016f",
+        "claim_indices": [
+          1
+        ],
+        "quotes": [
+          "The Harbor H10 warranty covers manufacturing defects for 24 months from purchase."
+        ]
+      }
+    ],
+    "missing_information": [],
+    "timings": {
+      "lexical_ms": 14.431000017793849,
+      "dense_with_query_embedding_ms": 686.052999983076,
+      "fusion_ms": 0.09762501576915383,
+      "retrieval_total_ms": 700.6143330072518,
+      "generation_ms": 970.6461250025313
+    },
+    "usage": {
+      "calls": [
+        {
+          "queue_time": 0.308587893,
+          "prompt_tokens": 1713,
+          "prompt_time": 0.114962841,
+          "completion_tokens": 335,
+          "completion_time": 0.385864526,
+          "total_tokens": 2048,
+          "total_time": 0.500827367,
+          "completion_tokens_details": {
+            "reasoning_tokens": 67
+          }
+        }
+      ]
+    },
+    "structural_validation": "passed",
+    "status": "conflicting_evidence"
+  },
+  "trace": {
+    "prompt_version": "grounded-claims-v2",
+    "context_ids": [
+      "4747078735c328a8656d809773dca3176300000e8e58bceaf6b0206dba67c75f",
+      "cd612d6021d3325724606554cfa007a799448fd291f80a4bfdf9e97e1ea94cc7",
+      "daa8ef6908e81383bfc1e88acdad6a8ffef6be37ef480bf39922f6d65e800caf",
+      "8dd7a30d90ca118199e1f4098232d30dc28c1028caee5762008f87a949560205",
+      "0edc5d0f941289943c7e51e15c12246949d0f9f622839c97f3afd6204b60e591",
+      "d48b40860ea48fba0ba91a35e6ed62c28b5dc548b13807454374c28fa374f42e"
+    ],
+    "context_excluded": [
+      {
+        "id": "7585b683908142e4373ff87b25146b6087501220e4b848f7cd79cc26e3e446de",
+        "reason": "document_diversity_limit"
+      },
+      {
+        "id": "6a67d5518312f62f28832217592691c654fe1824812b47d06d517b262402c0ee",
+        "reason": "document_diversity_limit"
+      },
+      {
+        "id": "dc6ac4faf1fdabebeffcf6624acc792be98fd21bd93e94d693ad7c17a505cab1",
+        "reason": "document_diversity_limit"
+      },
+      {
+        "id": "500a443ef0234418a7d7198c0e40294a59075ac00ae0e15c27894920c9d64a46",
+        "reason": "chunk_limit"
+      },
+      {
+        "id": "6f6ae936a16818a67d41fe26a3ecf2489814aecd07c513a3fefaf6139ec9ea8e",
+        "reason": "chunk_limit"
+      },
+      {
+        "id": "e2f41dc45840022e624e6271ab3a4ad8894a81cfe16cba125e0ba8017bd6a251",
+        "reason": "chunk_limit"
+      },
+      {
+        "id": "1086d514b6cd22f406047af329f54b55537c270c3cc66470ae831230b142e65a",
+        "reason": "chunk_limit"
+      },
+      {
+        "id": "13291806775a41358a4addffd46b23102be10437de0092a3561dda8d3a0b30fd",
+        "reason": "chunk_limit"
+      },
+      {
+        "id": "26db8bbc59b3c9aa259ff6d44c7f65f2a3b5b1186e52bedaeea6c314283fefed",
+        "reason": "chunk_limit"
+      },
+      {
+        "id": "4de449fae8ede836c376d81fd75994956358fad2ea5a75628dd3c0a4f9922b3f",
+        "reason": "chunk_limit"
+      },
+      {
+        "id": "8f25995d24d7ef1d240678a733e5b4d882555eaff1ec5ab31417b9ee80576c51",
+        "reason": "chunk_limit"
+      },
+      {
+        "id": "adb3a09fd714958c2254b9188ca36b9537de43f2e0d8ba8c6e604c80b4a5f3d6",
+        "reason": "chunk_limit"
+      },
+      {
+        "id": "1cf9bc83f679edd8ba1055eaedbe20333cc1ba28ebc8b9783281e21b43bc03e5",
+        "reason": "chunk_limit"
+      },
+      {
+        "id": "a5043cc410093fd78667a23e1580c9b86819043752bb965323d91bb6bbd8ca8b",
+        "reason": "chunk_limit"
+      }
+    ],
+    "tokenizer": "cl100k_base",
+    "context_input_tokens_estimate": 1350,
+    "stages": {
+      "lexical": [
+        {
+          "id": "4747078735c328a8656d809773dca3176300000e8e58bceaf6b0206dba67c75f",
+          "rank": 1,
+          "score": 16.64079422545487
+        },
+        {
+          "id": "cd612d6021d3325724606554cfa007a799448fd291f80a4bfdf9e97e1ea94cc7",
+          "rank": 2,
+          "score": 16.64079422545487
+        },
+        {
+          "id": "daa8ef6908e81383bfc1e88acdad6a8ffef6be37ef480bf39922f6d65e800caf",
+          "rank": 3,
+          "score": 7.137991767596713
+        },
+        {
+          "id": "7585b683908142e4373ff87b25146b6087501220e4b848f7cd79cc26e3e446de",
+          "rank": 4,
+          "score": 6.924557230873761
+        },
+        {
+          "id": "6a67d5518312f62f28832217592691c654fe1824812b47d06d517b262402c0ee",
+          "rank": 5,
+          "score": 6.689590867275687
+        },
+        {
+          "id": "0edc5d0f941289943c7e51e15c12246949d0f9f622839c97f3afd6204b60e591",
+          "rank": 6,
+          "score": 6.224225539724127
+        },
+        {
+          "id": "8dd7a30d90ca118199e1f4098232d30dc28c1028caee5762008f87a949560205",
+          "rank": 7,
+          "score": 6.151524961240966
+        },
+        {
+          "id": "6f6ae936a16818a67d41fe26a3ecf2489814aecd07c513a3fefaf6139ec9ea8e",
+          "rank": 8,
+          "score": 5.809637921453662
+        },
+        {
+          "id": "13291806775a41358a4addffd46b23102be10437de0092a3561dda8d3a0b30fd",
+          "rank": 9,
+          "score": 5.186339898447669
+        },
+        {
+          "id": "4de449fae8ede836c376d81fd75994956358fad2ea5a75628dd3c0a4f9922b3f",
+          "rank": 10,
+          "score": 2.669685024845604
+        },
+        {
+          "id": "adb3a09fd714958c2254b9188ca36b9537de43f2e0d8ba8c6e604c80b4a5f3d6",
+          "rank": 11,
+          "score": 2.619674736248731
+        },
+        {
+          "id": "1cf9bc83f679edd8ba1055eaedbe20333cc1ba28ebc8b9783281e21b43bc03e5",
+          "rank": 12,
+          "score": 2.601675620015013
+        },
+        {
+          "id": "aea0942b08ae9bbc7115c87424aa80a7043b66fad87c11f8d52cc383f20ad2ad",
+          "rank": 13,
+          "score": 2.5997651491882205
+        },
+        {
+          "id": "0a783b74e6dc6f5d3e8e3fb08c6670e72efc798082d26181082d45171ef1e73a",
+          "rank": 14,
+          "score": 2.592088928416717
+        },
+        {
+          "id": "8039f623b8c3fc4c62c11da681d9829798b31806f1c671642dbda4b7a944ec47",
+          "rank": 15,
+          "score": 2.5580964767252343
+        },
+        {
+          "id": "e0f63521413768074caee0dafde630f6421516f2cff88c60b2d0b143446ef4ff",
+          "rank": 16,
+          "score": 2.5434835499068997
+        },
+        {
+          "id": "b80b8e1795f36581bd0355b3df605f5c0c120d8e09d989e4ba4d5e962b93c533",
+          "rank": 17,
+          "score": 2.5355558737877573
+        },
+        {
+          "id": "a6b3a741d6343cf716bd64a36cd771e651c2f31dcbf574051f81a5e76851fbb8",
+          "rank": 18,
+          "score": 2.526096643630388
+        },
+        {
+          "id": "bae8c80d25f5e81db2b4d8be56c8a7f45a3e5717d4b6cb6f10c7dbcc3cb53bed",
+          "rank": 19,
+          "score": 2.517205104470672
+        },
+        {
+          "id": "af2a1f9b3a041eac02893f8df774cb7b78c967fe237f79b6538c66c18eb7f0c5",
+          "rank": 20,
+          "score": 2.5157032162969903
+        }
+      ],
+      "dense": [
+        {
+          "id": "cd612d6021d3325724606554cfa007a799448fd291f80a4bfdf9e97e1ea94cc7",
+          "rank": 1,
+          "score": 0.6927356123924255
+        },
+        {
+          "id": "4747078735c328a8656d809773dca3176300000e8e58bceaf6b0206dba67c75f",
+          "rank": 2,
+          "score": 0.6501245498657227
+        },
+        {
+          "id": "daa8ef6908e81383bfc1e88acdad6a8ffef6be37ef480bf39922f6d65e800caf",
+          "rank": 3,
+          "score": 0.43683159351348877
+        },
+        {
+          "id": "8dd7a30d90ca118199e1f4098232d30dc28c1028caee5762008f87a949560205",
+          "rank": 4,
+          "score": 0.4243585169315338
+        },
+        {
+          "id": "dc6ac4faf1fdabebeffcf6624acc792be98fd21bd93e94d693ad7c17a505cab1",
+          "rank": 5,
+          "score": 0.40473508834838867
+        },
+        {
+          "id": "d48b40860ea48fba0ba91a35e6ed62c28b5dc548b13807454374c28fa374f42e",
+          "rank": 6,
+          "score": 0.35090216994285583
+        },
+        {
+          "id": "500a443ef0234418a7d7198c0e40294a59075ac00ae0e15c27894920c9d64a46",
+          "rank": 7,
+          "score": 0.34627968072891235
+        },
+        {
+          "id": "e2f41dc45840022e624e6271ab3a4ad8894a81cfe16cba125e0ba8017bd6a251",
+          "rank": 8,
+          "score": 0.3411880135536194
+        },
+        {
+          "id": "1086d514b6cd22f406047af329f54b55537c270c3cc66470ae831230b142e65a",
+          "rank": 9,
+          "score": 0.3375435471534729
+        },
+        {
+          "id": "26db8bbc59b3c9aa259ff6d44c7f65f2a3b5b1186e52bedaeea6c314283fefed",
+          "rank": 10,
+          "score": 0.3306519389152527
+        },
+        {
+          "id": "8f25995d24d7ef1d240678a733e5b4d882555eaff1ec5ab31417b9ee80576c51",
+          "rank": 11,
+          "score": 0.32822805643081665
+        },
+        {
+          "id": "7585b683908142e4373ff87b25146b6087501220e4b848f7cd79cc26e3e446de",
+          "rank": 12,
+          "score": 0.32499533891677856
+        },
+        {
+          "id": "a5043cc410093fd78667a23e1580c9b86819043752bb965323d91bb6bbd8ca8b",
+          "rank": 13,
+          "score": 0.31976425647735596
+        },
+        {
+          "id": "9c77cdd248857eb3c0cbc7f7e644721bf7818d88026183e6e6c4e847a26e14d1",
+          "rank": 14,
+          "score": 0.30536848306655884
+        },
+        {
+          "id": "6a67d5518312f62f28832217592691c654fe1824812b47d06d517b262402c0ee",
+          "rank": 15,
+          "score": 0.298371821641922
+        },
+        {
+          "id": "0f78d972a018319d2c960e07fb9c58e9f0be566a10e70ff6cab3b1264e519948",
+          "rank": 16,
+          "score": 0.2942165732383728
+        },
+        {
+          "id": "485b5330304804fc9fd3e736e15ae1254aca54714cbdf906ec4140f23448a5af",
+          "rank": 17,
+          "score": 0.2937280237674713
+        },
+        {
+          "id": "8e70d2ca3f271e1b441049b3dbdcf35ce205a7e025a7ddc9c2770c72287f133c",
+          "rank": 18,
+          "score": 0.29000577330589294
+        },
+        {
+          "id": "6d985015df578a8923f9b6b33f63b8dac38966469b70d5b59817f6c96d1a68c8",
+          "rank": 19,
+          "score": 0.28978902101516724
+        },
+        {
+          "id": "e2603ec999b022451b22abd67f1962fbd34c94feb40608008d9b9f4f7a0e8a72",
+          "rank": 20,
+          "score": 0.2696911096572876
+        }
+      ],
+      "fused": [
+        {
+          "id": "4747078735c328a8656d809773dca3176300000e8e58bceaf6b0206dba67c75f",
+          "rank": 1,
+          "score": 0.03252247488101534
+        },
+        {
+          "id": "cd612d6021d3325724606554cfa007a799448fd291f80a4bfdf9e97e1ea94cc7",
+          "rank": 2,
+          "score": 0.03252247488101534
+        },
+        {
+          "id": "daa8ef6908e81383bfc1e88acdad6a8ffef6be37ef480bf39922f6d65e800caf",
+          "rank": 3,
+          "score": 0.031746031746031744
+        },
+        {
+          "id": "8dd7a30d90ca118199e1f4098232d30dc28c1028caee5762008f87a949560205",
+          "rank": 4,
+          "score": 0.03055037313432836
+        },
+        {
+          "id": "7585b683908142e4373ff87b25146b6087501220e4b848f7cd79cc26e3e446de",
+          "rank": 5,
+          "score": 0.029513888888888888
+        },
+        {
+          "id": "6a67d5518312f62f28832217592691c654fe1824812b47d06d517b262402c0ee",
+          "rank": 6,
+          "score": 0.02871794871794872
+        },
+        {
+          "id": "dc6ac4faf1fdabebeffcf6624acc792be98fd21bd93e94d693ad7c17a505cab1",
+          "rank": 7,
+          "score": 0.015384615384615385
+        },
+        {
+          "id": "0edc5d0f941289943c7e51e15c12246949d0f9f622839c97f3afd6204b60e591",
+          "rank": 8,
+          "score": 0.015151515151515152
+        },
+        {
+          "id": "d48b40860ea48fba0ba91a35e6ed62c28b5dc548b13807454374c28fa374f42e",
+          "rank": 9,
+          "score": 0.015151515151515152
+        },
+        {
+          "id": "500a443ef0234418a7d7198c0e40294a59075ac00ae0e15c27894920c9d64a46",
+          "rank": 10,
+          "score": 0.014925373134328358
+        },
+        {
+          "id": "6f6ae936a16818a67d41fe26a3ecf2489814aecd07c513a3fefaf6139ec9ea8e",
+          "rank": 11,
+          "score": 0.014705882352941176
+        },
+        {
+          "id": "e2f41dc45840022e624e6271ab3a4ad8894a81cfe16cba125e0ba8017bd6a251",
+          "rank": 12,
+          "score": 0.014705882352941176
+        },
+        {
+          "id": "1086d514b6cd22f406047af329f54b55537c270c3cc66470ae831230b142e65a",
+          "rank": 13,
+          "score": 0.014492753623188406
+        },
+        {
+          "id": "13291806775a41358a4addffd46b23102be10437de0092a3561dda8d3a0b30fd",
+          "rank": 14,
+          "score": 0.014492753623188406
+        },
+        {
+          "id": "26db8bbc59b3c9aa259ff6d44c7f65f2a3b5b1186e52bedaeea6c314283fefed",
+          "rank": 15,
+          "score": 0.014285714285714285
+        },
+        {
+          "id": "4de449fae8ede836c376d81fd75994956358fad2ea5a75628dd3c0a4f9922b3f",
+          "rank": 16,
+          "score": 0.014285714285714285
+        },
+        {
+          "id": "8f25995d24d7ef1d240678a733e5b4d882555eaff1ec5ab31417b9ee80576c51",
+          "rank": 17,
+          "score": 0.014084507042253521
+        },
+        {
+          "id": "adb3a09fd714958c2254b9188ca36b9537de43f2e0d8ba8c6e604c80b4a5f3d6",
+          "rank": 18,
+          "score": 0.014084507042253521
+        },
+        {
+          "id": "1cf9bc83f679edd8ba1055eaedbe20333cc1ba28ebc8b9783281e21b43bc03e5",
+          "rank": 19,
+          "score": 0.013888888888888888
+        },
+        {
+          "id": "a5043cc410093fd78667a23e1580c9b86819043752bb965323d91bb6bbd8ca8b",
+          "rank": 20,
+          "score": 0.0136986301369863
+        }
+      ]
+    },
+    "validation_failures": [],
+    "provider_attempts": [
+      1
+    ]
+  }
+}

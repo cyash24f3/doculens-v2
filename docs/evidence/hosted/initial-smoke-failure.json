@@ -1,0 +1,23 @@
+{
+  "service_id": "srv-daugf7flot8c73b22v90",
+  "tested_commit": "072d878921e1570e3f732d5dab57544d44617251",
+  "case": "How long is the Harbor warranty?",
+  "observed_response": {
+    "request_id": "36e0a8ec-7249-4094-8e29-73087f636381",
+    "generation_mode": "provider",
+    "model": "openai/gpt-oss-20b",
+    "status": "invalid_generated_output",
+    "answer": "The generated response failed validation. Please retry.",
+    "claims": [],
+    "citations": [],
+    "structural_validation": "not_run",
+    "total_tokens": 1772,
+    "completion_tokens": 58
+  },
+  "notes": [
+    "Initial hosted supported and missing scenarios passed; conflict failed output validation. No raw provider proposal was retained in public evidence.",
+    "A subsequent actual free Groq conflict development request returned two valid citations in one call, demonstrating model output variability.",
+    "The controlled repair now sends only fixed validation feedback, checks its context budget, and is limited to one extra request; no untrusted output is echoed.",
+    "An earlier smoke helper incorrectly expected an evidence.workspace field. It was corrected to check document IDs against the authorized sample list before generation checks."
+  ]
+}
