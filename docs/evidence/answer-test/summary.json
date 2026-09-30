@@ -1,0 +1,18 @@
+{
+  "questions": 12,
+  "answerable": 10,
+  "unanswerable": 2,
+  "wrong_answer_status_on_unanswerable": 0,
+  "unnecessary_abstention_status_on_answerable": 1,
+  "technical_failures": 0,
+  "automated_judged": 12,
+  "judge_failures": 0,
+  "automated_correctness_mean_0_2": 1.8333333333333333,
+  "automated_condition_preservation_rate": 0.9166666666666666,
+  "automated_citation_support_rate": 0.9166666666666666,
+  "automated_citation_coverage_mean": 0.9166666666666666,
+  "human_reviewed": 0,
+  "judge_human_disagreement": null,
+  "generation_ms_p50": 20176.23556200124,
+  "generation_ms_p95": 31528.8477787908
+}

@@ -1,0 +1,74 @@
+'use strict';
+const $ = id => document.getElementById(id);
+let token = '', docs = [], citations = [], latestTrace = null, currentCorpus = 'sample';
+const el = (tag, text, cls) => { const e = document.createElement(tag); if (text !== undefined) e.textContent = text; if (cls) e.className = cls; return e; };
+async function api(path, options = {}) {
+  const headers = {...options.headers}; if (token) headers.Authorization = `Bearer ${token}`;
+  if (options.body && !(options.body instanceof FormData)) { headers['Content-Type'] = 'application/json'; options.body = JSON.stringify(options.body); }
+  const response = await fetch(`/api/v1${path}`, {...options, headers});
+  if (response.status === 204) return null;
+  const result = await response.json();
+  if (!response.ok) throw new Error(result.error?.message || (Array.isArray(result.detail) ? result.detail.map(d => d.msg).join('; ') : `Request failed (${response.status})`));
+  return result;
+}
+function toast(message) { $('toast').textContent = message; $('toast').hidden = false; setTimeout(() => $('toast').hidden = true, 5000); }
+function showView(view) {
+  document.querySelectorAll('.view').forEach(e => e.hidden = e.id !== `view-${view}`);
+  document.querySelectorAll('.nav').forEach(e => e.classList.toggle('active', e.dataset.view === view));
+  $('breadcrumb').textContent = {ask:'Ask a question',documents:'Documents',sources:'Sources',developer:'Developer'}[view];
+  if (view === 'documents') loadDocuments(); if (view === 'sources') renderSources(); if (view === 'developer' && token) loadDeveloper();
+}
+document.querySelectorAll('[data-view]').forEach(b => b.addEventListener('click', () => showView(b.dataset.view)));
+document.querySelectorAll('[data-close]').forEach(b => b.addEventListener('click', () => $(b.dataset.close).close()));
+$('admin-open').onclick = () => $('admin-dialog').showModal();
+$('admin-form').onsubmit = async event => {
+  event.preventDefault(); const candidate = $('admin-token').value; const previous = token; token = candidate;
+  try { await api('/developer/metrics'); $('admin-dialog').close(); $('admin-token').value = ''; $('admin-open').textContent = 'Administrator connected'; $('access-label').textContent = 'Administrator access'; $('upload-open').hidden = false; $('developer-lock').hidden = true; $('developer-content').hidden = false;
+    if (!$('corpus').querySelector('[value="private"]')) { const o = el('option','Private knowledge base'); o.value = 'private'; $('corpus').append(o); }
+    await loadDocuments(); toast('Administrator access connected.');
+  } catch(error) { token = previous; $('admin-error').textContent = error.message; }
+};
+$('corpus').onchange = async () => { currentCorpus = $('corpus').value; citations = []; latestTrace = null; $('answer-region').replaceChildren(); await loadDocuments(); };
+function body(question) { return {question, corpus:currentCorpus, document_ids:Array.from($('scope-list').querySelectorAll('input:checked')).map(e=>e.value), method:'hybrid', top_k:5}; }
+$('scope-open').onclick = () => $('scope-list').hidden = !$('scope-list').hidden;
+async function loadDocuments() {
+  try { const data = await api(`/documents?corpus=${currentCorpus}&limit=100`); docs = data.documents; $('documents-status').textContent = '';
+    const oldSelection = new Set(Array.from($('scope-list').querySelectorAll('input:checked')).map(e=>e.value)); $('scope-list').replaceChildren();
+    docs.filter(d=>d.active).forEach(d=>{ const label=el('label'); const input=el('input'); input.type='checkbox'; input.value=d.id; input.checked=oldSelection.has(d.id); label.append(input,document.createTextNode(d.title)); $('scope-list').append(label); });
+    const list = $('documents-list'); list.replaceChildren();
+    if (!docs.length) list.append(el('div','No documents yet. Connect as an administrator to upload a source.','empty'));
+    docs.forEach(doc=>{ const card=el('article',undefined,'document-card'); card.append(el('h3',doc.title)); const v=doc.active, latest=doc.latest;
+      card.append(el('span', v ? `Active · ${v.label}` : `Ingestion · ${latest?.state || 'pending'}`, 'pill'));
+      card.append(el('div', v ? `${v.source_kind} · ${v.chunk_count} chunks · ${v.effective_date ? `Effective ${v.effective_date}` : 'No effective date supplied'}` : 'This document is not searchable yet.','document-meta'));
+      card.append(el('div', `Uploaded ${new Date((latest?.uploaded_at || doc.created_at)*1000).toLocaleString()}`, 'document-meta'));
+      if (latest && latest.id !== v?.id) card.append(el('p',`Latest replacement: ${latest.label} · ${latest.state}${latest.error_code ? ` · ${latest.error_code}` : ''}`,'subtle'));
+      for (const warning of (v?.warnings || latest?.warnings || [])) card.append(el('p',warning,'error'));
+      const actions=el('div',undefined,'document-actions'); const history=el('button','Version history'); history.onclick=()=>versionHistory(doc,card); actions.append(history);
+      if(token) { const replace=el('button','Replace version'); replace.onclick=()=>uploadDialog(doc); const remove=el('button','Remove','danger'); remove.onclick=async()=>{ if(!confirm(`Remove ${doc.title} and all its source content?`)) return; try { await api(`/documents/${doc.id}?corpus=${currentCorpus}`,{method:'DELETE'}); citations=[]; latestTrace=null; $('answer-region').replaceChildren(); await loadDocuments(); toast('Document removed from search and evidence access.'); } catch(e) { toast(e.message); } }; actions.append(replace,remove); }
+      card.append(actions); list.append(card);
+    });
+  } catch(e) { $('documents-status').textContent = e.message; }
+}
+async function versionHistory(doc,card) { try { const data=await api(`/documents/${doc.id}/versions?corpus=${currentCorpus}`); card.querySelector('.version-history')?.remove(); const history=el('pre',data.versions.map(v=>`${v.label} · ${v.state} · ${v.chunk_count} chunks\nRaw SHA-256: ${v.raw_sha256}\nPipeline: ${v.pipeline_fingerprint}\n${v.error_code || ''}`).join('\n\n'),'version-history'); card.append(history); } catch(e){toast(e.message);} }
+function uploadDialog(doc) { $('upload-form').reset(); $('replace-id').value=doc?.id || ''; $('upload-title').value=doc?.title || ''; $('upload-title').readOnly=Boolean(doc); $('upload-date').value=doc?.active?.effective_date || '';  $('upload-label').value=doc ? `v${(doc.latest?.sequence || 1)+1}` : 'v1'; $('upload-heading').textContent=doc ? 'Upload a replacement' : 'Upload document'; $('upload-error').textContent=''; $('upload-dialog').showModal(); }
+$('upload-open').onclick=()=>uploadDialog(null);
+$('upload-form').onsubmit=async event=>{ event.preventDefault(); const form=new FormData(); form.append('file',$('upload-file').files[0]); form.append('title',$('upload-title').value); form.append('label',$('upload-label').value); form.append('corpus',currentCorpus); if($('replace-id').value)form.append('document_id',$('replace-id').value); if($('upload-date').value)form.append('effective_date',$('upload-date').value);
+  const submit=event.target.querySelector('[type="submit"]') || event.target.querySelector('.primary'); submit.disabled=true;
+  try { const data=await api('/documents',{method:'POST',body:form}); $('upload-dialog').close(); toast(data.duplicate ? 'Identical content is already indexed or queued.' : 'Ingestion queued.'); await loadDocuments(); pollJob(data.job_id,currentCorpus); } catch(e){$('upload-error').textContent=e.message;} finally{submit.disabled=false;}
+};
+async function pollJob(id,scope) { for(let i=0;i<150;i++) { await new Promise(r=>setTimeout(r,2000)); try { const job=await api(`/jobs/${id}?corpus=${scope}`); if(currentCorpus===scope) $('documents-status').textContent=`Ingestion: ${job.stage}${job.total ? ` · ${job.done}/${job.total} chunks` : ''}`; if(job.state==='completed' || job.state==='failed') { if(currentCorpus===scope) await loadDocuments(); toast(job.state==='completed' ? 'Document is ready to search.' : `${job.error_code}: ${job.error_message}`); if(job.state==='failed') { const retry=el('button','Retry failed ingestion','primary'); retry.onclick=async()=>{try{await api(`/jobs/${id}/retry?corpus=${scope}`,{method:'POST'});retry.remove();pollJob(id,scope);}catch(e){toast(e.message);}}; $('documents-status').append(retry); } return; } } catch(e) { toast(e.message); return; } } toast('Ingestion is still running. Check the job endpoint for its current status.'); }
+$('ask-form').onsubmit=async event=>{ event.preventDefault(); const button=$('ask-button'); button.disabled=true; const region=$('answer-region'); const loading=el('div',undefined,'loading'); loading.append(el('span',undefined,'spinner'),document.createTextNode('Retrieving evidence and validating the answer…')); region.replaceChildren(loading);
+  try { const result=await api('/answers',{method:'POST',body:body($('question').value)}); latestTrace=result.request_id; citations=result.citations; renderAnswer(result); renderSources(); $('compare-question').value=$('question').value; } catch(e){region.replaceChildren(el('div',e.message,'answer-card error'));} finally{button.disabled=false;}
+};
+document.querySelectorAll('[data-question]').forEach(b=>b.onclick=()=>{$('question').value=b.dataset.question;$('ask-form').requestSubmit();});
+function renderAnswer(result) { const card=el('article',undefined,'answer-card'); const label=el('div',undefined,'answer-label'); label.append(el('span',result.status.replaceAll('_',' ').toUpperCase()),el('span',result.generation_mode==='fixture'?'SCRIPTED FIXTURE':'DOCULENS')); card.append(label);
+  if(result.claims.length) result.claims.forEach((claim,i)=>{const p=el('p',claim.text);card.append(p);result.citations.filter(c=>c.claim_indices.includes(i)).forEach(c=>card.append(citationButton(c)));}); else card.append(el('p',result.answer));
+  result.missing_information.forEach(m=>card.append(el('p',m,'subtle')));
+  card.append(el('div',`Corpus revision ${result.corpus_revision} · ${result.citations.length} source passages · ${Math.round(result.timings.total_ms)} ms`,'answer-details')); $('answer-region').replaceChildren(card);
+}
+function citationButton(c){const b=el('button',`${c.title} · ${c.version}${c.page_start ? ` · p. ${c.page_start}` : ''}`,'citation-button');b.onclick=()=>openSource(c.id);return b;}
+async function openSource(id){try{const s=await api(`/evidence/${id}?corpus=${currentCorpus}`);$('source-title').textContent=s.title;$('source-meta').textContent=`${s.version} · ${s.section || s.source_kind}${s.page_start ? ` · pages ${s.page_start}–${s.page_end}` : ''} · ${s.effective_date ? `Effective ${s.effective_date}` : 'No effective date'} · extracted offsets ${s.start}–${s.end}`;$('source-passage').textContent=s.text;$('source-surrounding').textContent=s.surrounding_context;$('source-original').replaceChildren();if(s.source_locator){let url;try{url=new URL(s.source_locator);}catch{}if(url && ['https:','http:'].includes(url.protocol)){const a=el('a','Original source ↗');a.href=url.href;a.target='_blank';a.rel='noopener noreferrer';$('source-original').append(a);}else $('source-original').textContent=s.source_locator;}$('source-dialog').showModal();}catch(e){toast(e.message);}}
+function renderSources(){const list=$('sources-list');list.replaceChildren();if(!citations.length)list.append(el('div','No cited sources in the most recent answer.','empty'));citations.forEach(c=>{const card=el('article',undefined,'source-card');card.append(el('h3',c.title),el('span',`${c.version} · ${c.section || c.source_kind}`,'subtle'),el('p',c.text),citationButton(c));list.append(card);});}
+$('compare-form').onsubmit=async event=>{event.preventDefault();const root=$('compare-results');root.replaceChildren(el('div','Running four retrieval methods on the selected corpus…','loading'));const submit=event.target.querySelector('button');submit.disabled=true;try{const comparison=await api('/developer/compare',{method:'POST',body:body($('compare-question').value)});const results=comparison.comparisons;latestTrace=comparison.request_id;const grid=el('div',undefined,'comparison-grid');results.forEach(r=>{const card=el('article',undefined,'comparison-card');card.append(el('h3',r.method),el('p',`Revision ${r.corpus_revision} · ${r.timings.retrieval_total_ms.toFixed(1)} ms`,'subtle'));r.results.forEach(h=>{const row=el('div',`${h.rank}. ${h.evidence.title} · ${h.evidence.section || ''}`,'rank-row');row.append(el('small',`${h.score_type}: ${h.score.toFixed(4)}`));row.onclick=()=>openSource(h.evidence.id);card.append(row);});grid.append(card);});root.replaceChildren(grid);}catch(e){root.replaceChildren(el('div',e.message,'error'));}finally{submit.disabled=false;}};
+async function loadDeveloper(){try{const [runs,metrics]=await Promise.all([api('/developer/experiments'),api('/developer/metrics')]);$('metrics-content').textContent=JSON.stringify(metrics,null,2);$('experiments-list').replaceChildren();if(!runs.experiments.length)$('experiments-list').append(el('div','No persisted benchmark runs yet.','empty'));runs.experiments.forEach(r=>{const card=el('details');card.append(el('summary',`${r.manifest.split} · ${r.manifest.model_backend} · ${new Date(r.created_at*1000).toLocaleString()}`),el('pre',JSON.stringify({manifest:r.manifest,summary:r.summary},null,2)));$('experiments-list').append(card);});if(latestTrace)$('trace-content').textContent=JSON.stringify(await api(`/developer/traces/${latestTrace}`),null,2);}catch(e){toast(e.message);}}
+(async()=>{try{const config=await api('/config');$('mode-pill').textContent=config.generation_mode==='fixture'?'Fixture demonstration':config.generation_mode==='provider'?'Provider configured':'Retrieval available';$('fixture-notice').hidden=config.generation_mode!=='fixture';$('upload-limit').textContent=`Maximum upload: ${(config.upload_limit_bytes/1024/1024).toFixed(0)} MB. A separate worker processes ingestion.`;await loadDocuments();}catch(e){$('mode-pill').textContent='Connection unavailable';toast(e.message);}})();

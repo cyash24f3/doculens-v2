@@ -1,0 +1,18 @@
+# Build record — 2026-09-30
+
+The workspace began empty. The user's free-only requirement and M5 Air/24 GB/1 TB hardware constrained implementation throughout. No paid API, paid hosting resource, unrelated repository or resume was changed. Commands below actually ran; follow the README for their configuration rather than copying historical environment values blindly.
+
+| Milestone | Delivered and executed | Observation and remaining limit |
+|---|---|---|
+| 0: Baseline | Inspected empty Git tree/tools; official model/library references; recorded `baseline.md` | No previous application to migrate. Docker daemon initially unavailable; existing Docker Desktop was later started successfully. |
+| 1: Ingestion | `doculens migrate`, `seed`; parser/chunk/provenance tests; actual TXT/MD/two-page PDF ingestion | Immutable versions, exact extraction offsets, conservative normalization, active-pointer promotion. OCR is deliberately required for image-only PDF. |
+| 2: Retrieval | Real model loading and `benchmark --split dev`; BM25/dense/RRF/cross-encoder comparison | Verified 384 dimensions/256 model limit; 180/32 chunk settings. Exact scan; no ANN or probability interpretation of scores. |
+| 3: Generation | HTTPX provider contract tests; actual Ollama 3B and 7B development smokes; actual authenticated API answer/source/trace | 3B failed semantic examples; 7B improved statuses but one response omitted required conditions despite valid citations. Failures retained. |
+| 4: Interface | Playwright Chromium public/admin journeys, screenshots, 390 px viewport, zero JavaScript errors | Actual uploads, replacement/history, failed replacement, deletion, same-snapshot developer comparison. Scripted generation is visible. |
+| 5: Benchmark | Frozen 60/140 split v2; real development/final retrieval comparisons; 12 real answer evaluations with a named local automated judge | 200 intents, 55 missing. No human labels/calibration; final comparison has disclosed earlier theme exposure. Targets set from development were met. |
+| 6: Reliability | Lease/crash/stale-promotion/rollback/scope/cache/deletion tests; actual PostgreSQL integration; 100-request retrieval load; nine real-model ingestion profiles; injection smoke | No paid services. Load concurrency two and repeated query; no remote capacity claim. One injection observation is not general immunity. |
+| 7: Packaging | Locked Python dependencies, Linux CPU Torch, nonroot Docker/Compose, migrations, health checks, CI, README/architecture/learning/demo/acceptance docs | Local checks/container path verified. Clean-checkout and restart evidence recorded separately at completion. Render blueprint and GitHub Actions remote execution need the user's account/repository. |
+
+Final local check command: `uv run ruff check .`, `uv run ruff format --check .`, `uv run mypy src/doculens`, and `DOCULENS_TEST_POSTGRES_URL=... uv run pytest -q` produced **37 passing tests**. The ordinary provider-free suite skips the two PostgreSQL tests unless configured. There is one upstream TestClient deprecation warning about HTTPX; it is not hidden or treated as a failure. Tests exercise behavior rather than model semantic quality.
+
+Original sanitized experiment reports were generated before the first commit, and their manifests retain `uncommitted-initial-build`. Their recorded lock hashes identify those executions; packaging-only changes do not overwrite historical manifests. New benchmark runs record the actual commit. The clean-checkout record captures the committed revision used for reproduction.

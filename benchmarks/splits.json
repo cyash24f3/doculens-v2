@@ -1,0 +1,17 @@
+{
+  "version": 2,
+  "seed": 0,
+  "strategy": "frozen theme/source groups; exact 60/140 split; no parameter tuning on test",
+  "development_groups": [
+    "access",
+    "battery",
+    "exports",
+    "harbor",
+    "returns",
+    "shipping"
+  ],
+  "human_reviewed": false,
+  "AI_generated": true,
+  "family_count": 200,
+  "independence_warning": "Distinct question intents share source documents; intervals resample source/theme groups conservatively."
+}

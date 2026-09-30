@@ -1,0 +1,87 @@
+{
+  "timestamp_utc_epoch": 1790770504.992646,
+  "hardware_user_supplied": "Mac M5 Air, 24 GB RAM, 1 TB storage",
+  "platform": "macOS-27.0-arm64-arm-64bit",
+  "physical_memory_bytes": 25769803776,
+  "ollama_version": {
+    "version": "0.35.0"
+  },
+  "local_model_tags": {
+    "models": [
+      {
+        "name": "qwen2.5:7b-instruct",
+        "model": "qwen2.5:7b-instruct",
+        "modified_at": "2026-09-30T15:02:38.60710423+05:30",
+        "size": 4683087332,
+        "digest": "845dbda0ea48ed749caafd9e6037047aa19acfcfd82e704d7ca97d631a0b697e",
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "qwen2",
+          "families": [
+            "qwen2"
+          ],
+          "parameter_size": "7.6B",
+          "quantization_level": "Q4_K_M",
+          "context_length": 32768,
+          "embedding_length": 3584
+        },
+        "capabilities": [
+          "completion",
+          "tools"
+        ]
+      },
+      {
+        "name": "qwen2.5:3b-instruct",
+        "model": "qwen2.5:3b-instruct",
+        "modified_at": "2026-09-30T14:37:06.524739148+05:30",
+        "size": 1929912432,
+        "digest": "357c53fb659c5076de1d65ccb0b397446227b71a42be9d1603d46168015c9e4b",
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "qwen2",
+          "families": [
+            "qwen2"
+          ],
+          "parameter_size": "3.1B",
+          "quantization_level": "Q4_K_M",
+          "context_length": 32768,
+          "embedding_length": 2048
+        },
+        "capabilities": [
+          "completion",
+          "tools"
+        ]
+      }
+    ]
+  },
+  "loaded_runtime": {
+    "models": [
+      {
+        "name": "qwen2.5:7b-instruct",
+        "model": "qwen2.5:7b-instruct",
+        "size": 4740716952,
+        "digest": "845dbda0ea48ed749caafd9e6037047aa19acfcfd82e704d7ca97d631a0b697e",
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "qwen2",
+          "families": [
+            "qwen2"
+          ],
+          "parameter_size": "7.6B",
+          "quantization_level": "Q4_K_M"
+        },
+        "expires_at": "2026-09-30T18:00:04.972483+05:30",
+        "size_vram": 4740716952,
+        "context_length": 4096
+      }
+    ]
+  },
+  "load_request_http_status": 200,
+  "purpose": "actual local model load/resource observation, not semantic evaluation",
+  "cloud_calls": 0,
+  "local_provider_url": "http://127.0.0.1:11435",
+  "retrieval_process_memory_note": "See each benchmark manifest for measured encoder/reranker RSS; process RSS includes runtime libraries."
+}

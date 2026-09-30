@@ -1,0 +1,78 @@
+{
+  "http_status": 200,
+  "answer": {
+    "request_id": "fbba2e74-4f8b-4a46-bf80-179c8b823e8c",
+    "corpus_revision": 21,
+    "corpus_manifest": "47d51c66aacc183f7d2710669d326ef312b11f3aa5aaa845449605cb8cb17405",
+    "method": "hybrid",
+    "generation_mode": "provider",
+    "model": "qwen2.5:7b-instruct",
+    "status": "answered",
+    "answer": "Yes, you can return an opened product after 20 days, as long as it is within the 30-day return period.",
+    "claims": [
+      {
+        "text": "Yes, you can return an opened product after 20 days, as long as it is within the 30-day return period.",
+        "evidence_ids": [
+          "1f42b091cf2c982d3cf74a265e7ea2fcdd7d39bcdc60e075487155e36ca4dca6"
+        ],
+        "quotes": [
+          {
+            "evidence_id": "1f42b091cf2c982d3cf74a265e7ea2fcdd7d39bcdc60e075487155e36ca4dca6",
+            "span": "Opened products may be returned within 30 calendar days of delivery, provided all accessories and proof of purchase are included."
+          }
+        ]
+      }
+    ],
+    "citations": [
+      {
+        "id": "1f42b091cf2c982d3cf74a265e7ea2fcdd7d39bcdc60e075487155e36ca4dca6",
+        "document_id": "21d063e7-e0fe-493f-8739-f1ad0471d51c",
+        "version_id": "33d4d4a1-bd3a-4cc0-b3d1-c20f023c8c20",
+        "title": "Returns policy",
+        "version": "2026.1",
+        "effective_date": "2026-09-01",
+        "source_kind": "markdown",
+        "source_locator": null,
+        "text": "## Opened goods\n\nOpened products may be returned within 30 calendar days of delivery, provided all accessories and proof of purchase are included.",
+        "section": "Opened goods",
+        "page_start": null,
+        "page_end": null,
+        "start": 18,
+        "end": 164,
+        "ordinal": 1,
+        "token_count": 26,
+        "content_sha256": "3f03592658cf90bc75079eb24d1f93eb6ed5b87bb5257c96de82d6249e8f76f6",
+        "claim_indices": [
+          0
+        ],
+        "quotes": [
+          "Opened products may be returned within 30 calendar days of delivery, provided all accessories and proof of purchase are included."
+        ]
+      }
+    ],
+    "missing_information": [],
+    "timings": {
+      "lexical_ms": 16.884916985873133,
+      "dense_with_query_embedding_ms": 248.76470799790695,
+      "fusion_ms": 0.3144170041196048,
+      "retrieval_total_ms": 266.02725000702776,
+      "generation_ms": 56587.282791995676,
+      "total_ms": 58067.55829098984
+    },
+    "usage": {
+      "calls": [
+        {
+          "prompt_tokens": 1463,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "completion_tokens": 230,
+          "total_tokens": 1693
+        }
+      ]
+    },
+    "structural_validation": "passed"
+  },
+  "source_resolved": true,
+  "trace_resolved": true
+}

@@ -1,0 +1,151 @@
+{
+  "requests": 9,
+  "failures": 0,
+  "conditions": "warm encoder, sequential isolated ingestion; not throughput",
+  "embedding_fingerprint": "sentence-transformers/all-MiniLM-L6-v2@1110a243fdf4706b3f48f1d95db1a4f5529b4d41:384:normalized",
+  "rss_bytes": 449871872,
+  "model_load": {
+    "encoder_load_seconds": 44.910705082991626,
+    "rss_before_bytes": 93716480,
+    "rss_encoder_bytes": 395476992,
+    "dimension": 384,
+    "max_sequence_length": 256
+  },
+  "per_ingestion": [
+    {
+      "source": "data/sample/returns.md",
+      "bytes": 829,
+      "iteration": 0,
+      "timings": {
+        "extraction_ms": 13.715833018068224,
+        "chunking_ms": 11.639083997579291,
+        "embedding_ms": 162.82875000615604,
+        "total_before_activation_ms": 195.34820801345631,
+        "activation_before_commit_ms": 23.930124996695668
+      }
+    },
+    {
+      "source": "data/public/python-venv.txt",
+      "bytes": 30839,
+      "iteration": 0,
+      "timings": {
+        "extraction_ms": 5.510166985914111,
+        "chunking_ms": 122.3782500019297,
+        "embedding_ms": 7469.633082975633,
+        "total_before_activation_ms": 7604.008833004627,
+        "activation_before_commit_ms": 11.480042012408376
+      }
+    },
+    {
+      "source": "data/sample/beacon-quickstart.pdf",
+      "bytes": 2931,
+      "iteration": 0,
+      "timings": {
+        "extraction_ms": 17.56824998301454,
+        "chunking_ms": 2.988082997035235,
+        "embedding_ms": 103.77133300062269,
+        "total_before_activation_ms": 132.47237500036135,
+        "activation_before_commit_ms": 6.666750006843358
+      }
+    },
+    {
+      "source": "data/sample/returns.md",
+      "bytes": 829,
+      "iteration": 1,
+      "timings": {
+        "extraction_ms": 34.715082991169766,
+        "chunking_ms": 8.002207992831245,
+        "embedding_ms": 140.1452920108568,
+        "total_before_activation_ms": 195.97850000718608,
+        "activation_before_commit_ms": 7.016333984211087
+      }
+    },
+    {
+      "source": "data/public/python-venv.txt",
+      "bytes": 30839,
+      "iteration": 1,
+      "timings": {
+        "extraction_ms": 7.302000012714416,
+        "chunking_ms": 150.3907089936547,
+        "embedding_ms": 1779.0658329904545,
+        "total_before_activation_ms": 1940.2797910152003,
+        "activation_before_commit_ms": 1.6590419982094318
+      }
+    },
+    {
+      "source": "data/sample/beacon-quickstart.pdf",
+      "bytes": 2931,
+      "iteration": 1,
+      "timings": {
+        "extraction_ms": 2.307332993950695,
+        "chunking_ms": 0.4462910001166165,
+        "embedding_ms": 11.475625011371449,
+        "total_before_activation_ms": 15.473083010874689,
+        "activation_before_commit_ms": 0.8323750225827098
+      }
+    },
+    {
+      "source": "data/sample/returns.md",
+      "bytes": 829,
+      "iteration": 2,
+      "timings": {
+        "extraction_ms": 0.6259590154513717,
+        "chunking_ms": 0.6505420024041086,
+        "embedding_ms": 11.939041985897347,
+        "total_before_activation_ms": 14.227500010747463,
+        "activation_before_commit_ms": 0.992499990388751
+      }
+    },
+    {
+      "source": "data/public/python-venv.txt",
+      "bytes": 30839,
+      "iteration": 2,
+      "timings": {
+        "extraction_ms": 0.7248749898280948,
+        "chunking_ms": 14.238290983485058,
+        "embedding_ms": 501.60962500376627,
+        "total_before_activation_ms": 518.5244579915889,
+        "activation_before_commit_ms": 1.9490420236252248
+      }
+    },
+    {
+      "source": "data/sample/beacon-quickstart.pdf",
+      "bytes": 2931,
+      "iteration": 2,
+      "timings": {
+        "extraction_ms": 3.49333300255239,
+        "chunking_ms": 0.6846670003142208,
+        "embedding_ms": 18.174875003751367,
+        "total_before_activation_ms": 24.14216598845087,
+        "activation_before_commit_ms": 0.9730839810799807
+      }
+    }
+  ],
+  "stages": {
+    "extraction_ms": {
+      "count": 9,
+      "p50_ms": 5.510166985914111,
+      "p95_ms": 27.856349787907668
+    },
+    "chunking_ms": {
+      "count": 9,
+      "p50_ms": 8.002207992831245,
+      "p95_ms": 139.1857253969647
+    },
+    "embedding_ms": {
+      "count": 9,
+      "p50_ms": 140.1452920108568,
+      "p95_ms": 5193.40618298156
+    },
+    "total_before_activation_ms": {
+      "count": 9,
+      "p50_ms": 195.34820801345631,
+      "p95_ms": 5338.517216208855
+    },
+    "activation_before_commit_ms": {
+      "count": 9,
+      "p50_ms": 1.9490420236252248,
+      "p95_ms": 18.950091802980747
+    }
+  }
+}

@@ -1,0 +1,16 @@
+# Free public FIXTURE demo only. Persistent full-stack operation is local Compose.
+services:
+  - type: web
+    name: doculens-demo
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    dockerCommand: doculens demo --host 0.0.0.0 --port 10000
+    healthCheckPath: /api/v1/readiness
+    envVars:
+      - key: DOCULENS_MODEL_BACKEND
+        value: fixture
+      - key: DOCULENS_GENERATION_MODE
+        value: fixture
+      - key: DOCULENS_ADMIN_TOKEN
+        value: ""

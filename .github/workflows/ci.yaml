@@ -1,0 +1,41 @@
+name: checks
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  deterministic:
+    runs-on: ubuntu-latest
+    env:
+      DOCULENS_MODEL_BACKEND: fixture
+      DOCULENS_GENERATION_MODE: fixture
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with: {version: '0.12.1', enable-cache: true}
+      - run: uv sync --frozen --python 3.12
+      - run: uv run ruff check .
+      - run: uv run ruff format --check .
+      - run: uv run mypy src
+      - run: uv run pytest -q -m 'not models and not provider and not postgres'
+      - run: uv run doculens migrate && uv run doculens seed && uv run doculens benchmark --split ci
+  postgres:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: pgvector/pgvector:0.8.2-pg17
+        env:
+          POSTGRES_USER: doculens
+          POSTGRES_PASSWORD: local-test-only
+          POSTGRES_DB: doculens
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd 'pg_isready -U doculens' --health-interval 5s
+          --health-timeout 3s --health-retries 20
+    env:
+      DOCULENS_TEST_POSTGRES_URL: postgresql+psycopg://doculens:local-test-only@localhost:5432/doculens
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with: {version: '0.12.1'}
+      - run: uv sync --frozen --python 3.12
+      - run: uv run pytest -q -m postgres

@@ -1,0 +1,34 @@
+{
+  "Can I return an opened product after 20 days?": {
+    "status": "answered",
+    "claims": [
+      {
+        "title": "Returns policy",
+        "span": "Opened products may be returned within 30 calendar days of delivery, provided all accessories and proof of purchase are included.",
+        "text": "Yes. An opened product is eligible within 30 calendar days of delivery if all accessories and proof of purchase are included."
+      }
+    ]
+  },
+  "Is delivery to Antarctica guaranteed?": {
+    "status": "insufficient_evidence",
+    "claims": [],
+    "missing_information": [
+      "The documentation does not specify a delivery guarantee for Antarctica."
+    ]
+  },
+  "How long is the Harbor warranty?": {
+    "status": "conflicting_evidence",
+    "claims": [
+      {
+        "title": "Harbor retail warranty",
+        "span": "The Harbor H10 warranty covers manufacturing defects for 12 months from purchase.",
+        "text": "The retail warranty states 12 months from purchase."
+      },
+      {
+        "title": "Harbor service warranty",
+        "span": "The Harbor H10 warranty covers manufacturing defects for 24 months from purchase.",
+        "text": "The service warranty states 24 months from purchase. The eligible sources conflict; the duration cannot be resolved from these documents."
+      }
+    ]
+  }
+}

@@ -1,0 +1,66 @@
+name: doculens
+x-app: &app
+  build: .
+  image: doculens:local
+  environment: &environment
+    DOCULENS_DATABASE_URL: postgresql+psycopg://doculens:${DOCULENS_DB_PASSWORD:-local-development-only}@db:5432/doculens
+    DOCULENS_STORAGE_DIR: /app/var/files
+    DOCULENS_MODEL_BACKEND: ${DOCULENS_MODEL_BACKEND:-fixture}
+    DOCULENS_GENERATION_MODE: ${DOCULENS_GENERATION_MODE:-fixture}
+    DOCULENS_ADMIN_TOKEN: ${DOCULENS_ADMIN_TOKEN:-}
+    DOCULENS_PROVIDER_URL: ${DOCULENS_PROVIDER_URL:-http://host.docker.internal:11434/v1}
+    DOCULENS_PROVIDER_MODEL: ${DOCULENS_PROVIDER_MODEL:-qwen2.5:7b-instruct}
+    DOCULENS_PROVIDER_API_KEY: ${DOCULENS_PROVIDER_API_KEY:-ollama}
+    DOCULENS_PROVIDER_TIMEOUT: ${DOCULENS_PROVIDER_TIMEOUT:-120}
+    DOCULENS_CPU_THREADS: 2
+  volumes:
+    - files:/app/var
+    - models:/home/app/.cache
+    - results:/app/outputs
+services:
+  db:
+    image: pgvector/pgvector:0.8.2-pg17@sha256:feb68f4f15446397d8cac7f4fe48fe4586de83160d1fc48b46283312d1a33966
+    environment:
+      POSTGRES_USER: doculens
+      POSTGRES_DB: doculens
+      POSTGRES_PASSWORD: ${DOCULENS_DB_PASSWORD:-local-development-only}
+    ports: ["127.0.0.1:5433:5432"]
+    volumes: ["database:/var/lib/postgresql/data"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U doculens -d doculens"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    restart: unless-stopped
+  migrate:
+    <<: *app
+    command: ["doculens", "migrate"]
+    depends_on:
+      db: {condition: service_healthy}
+    healthcheck: {disable: true}
+  seed:
+    <<: *app
+    command: ["doculens", "seed"]
+    depends_on:
+      migrate: {condition: service_completed_successfully}
+    healthcheck: {disable: true}
+  api:
+    <<: *app
+    ports: ["127.0.0.1:8001:8000"]
+    depends_on:
+      seed: {condition: service_completed_successfully}
+    restart: unless-stopped
+    stop_grace_period: 40s
+  worker:
+    <<: *app
+    command: ["doculens", "worker"]
+    depends_on:
+      seed: {condition: service_completed_successfully}
+    healthcheck: {disable: true}
+    restart: unless-stopped
+    stop_grace_period: 40s
+volumes:
+  database:
+  files:
+  models:
+  results:

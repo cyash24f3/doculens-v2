@@ -1,0 +1,31 @@
+{
+  "url": "http://127.0.0.1:8000",
+  "checks": [
+    "supported fixture answer",
+    "source inspection",
+    "missing fixture answer",
+    "conflict fixture answer",
+    "documents real API",
+    "developer access protected",
+    "390px mobile no overflow",
+    "administrator upload-to-ready",
+    "replacement history",
+    "failed replacement retains active version",
+    "document removal",
+    "same-snapshot retrieval comparison"
+  ],
+  "admin_journeys": "verified",
+  "javascript_errors": [],
+  "screenshots": [
+    "docs/evidence/screenshots/answer.png",
+    "docs/evidence/screenshots/ask.png",
+    "docs/evidence/screenshots/conflict.png",
+    "docs/evidence/screenshots/developer.png",
+    "docs/evidence/screenshots/documents.png",
+    "docs/evidence/screenshots/failed-replacement.png",
+    "docs/evidence/screenshots/missing.png",
+    "docs/evidence/screenshots/mobile.png",
+    "docs/evidence/screenshots/replacement.png",
+    "docs/evidence/screenshots/source.png"
+  ]
+}

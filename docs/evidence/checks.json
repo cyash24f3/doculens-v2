@@ -1,0 +1,30 @@
+{
+  "timestamp_utc_epoch": 1790770512.1057081,
+  "postgres": "local Compose, isolated test schemas",
+  "checks": [
+    {
+      "command": "uv run ruff check .",
+      "exit_code": 0,
+      "stdout": "All checks passed!\n",
+      "stderr": ""
+    },
+    {
+      "command": "uv run ruff format --check .",
+      "exit_code": 0,
+      "stdout": "77 files already formatted\n",
+      "stderr": ""
+    },
+    {
+      "command": "uv run mypy src/doculens",
+      "exit_code": 0,
+      "stdout": "Success: no issues found in 25 source files\n",
+      "stderr": ""
+    },
+    {
+      "command": "uv run pytest -q",
+      "exit_code": 0,
+      "stdout": ".....................................                                    [100%]\n=============================== warnings summary ===============================\n.venv/lib/python3.12/site-packages/fastapi/testclient.py:1\n  /Users/cyash/Documents/ChatGPT/DocuLens/.venv/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.\n    from starlette.testclient import TestClient as TestClient  # noqa\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n37 passed, 1 warning in 12.66s\n",
+      "stderr": ""
+    }
+  ]
+}
