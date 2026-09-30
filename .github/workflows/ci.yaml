@@ -29,7 +29,7 @@ jobs:
           POSTGRES_DB: doculens
         ports: ['5432:5432']
         options: >-
-          --health-cmd 'pg_isready -U doculens' --health-interval 5s
+          --health-cmd "pg_isready -U doculens" --health-interval 5s
           --health-timeout 3s --health-retries 20
     env:
       DOCULENS_TEST_POSTGRES_URL: postgresql+psycopg://doculens:local-test-only@localhost:5432/doculens
