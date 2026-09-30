@@ -1,10 +1,18 @@
 # DocuLens
 
-An evidence-grounded knowledge copilot for support documentation. Upload PDF, Markdown or text; search with BM25, MiniLM, reciprocal rank fusion or a cross-encoder; ask a locally generated question; inspect the exact source/version behind each citation.
+[![checks](https://github.com/cyash24f3/doculens-v2/actions/workflows/ci.yaml/badge.svg)](https://github.com/cyash24f3/doculens-v2/actions/workflows/ci.yaml)
 
-Built and verified on a Mac M5 Air with 24 GB RAM and 1 TB storage. Development uses free software, downloaded local models and Docker. **No paid provider calls or cloud deployment were used.** The public deployment blueprint uses a free, explicitly scripted sample demonstration.
+An evidence-grounded knowledge copilot for support documentation. Upload PDF, Markdown or text; search with BM25, MiniLM, reciprocal rank fusion or a cross-encoder; generate an answer locally or through a configured hosted model; inspect the exact source/version behind each citation.
+
+Built and verified on a Mac M5 Air with 24 GB RAM and 1 TB storage. Development uses free software, downloaded local models and Docker. Hosted deployment uses Render Free, pinned quantized ONNX retrieval and Groq Free for real answers. No paid plan or paid provider was selected. Local fixture mode remains available for credential-free setup.
 
 ![Actual running fixture demonstration](docs/evidence/screenshots/answer.png)
+
+## Free hosted build
+
+`render.yaml` and `scripts/prepare_render.py` configure genuine MiniLM retrieval plus Groq `openai/gpt-oss-20b` answers on a free Python service. The key is a server-side secret, never a browser credential. Public sample answers share a 30-per-UTC-day limit and are at least 65 seconds apart. Local fixtures are not used in the hosted answer path.
+
+The free host serves the controlled sample corpus and disables administration/private uploads because its disk is disposable. Full versioned private-workspace operation is available through persistent Compose below. Render sleeps idle services and has a shared monthly workspace allowance; this is a portfolio demo, not a durable always-on production service. See [deployment details](docs/deployment.md).
 
 ## Start without credentials
 
@@ -79,7 +87,7 @@ uv run doculens serve
 uv run doculens worker
 ```
 
-`doculens demo` always overrides generation to fixture; use `serve` for real generation. Live generation requires the administrator credential, including for sample questions. With generation disabled, ingestion/search work and answers report `provider_unavailable`.
+`doculens demo` always overrides generation to fixture; use `serve` for real generation. Local provider generation requires the administrator credential, including for sample questions. The public host explicitly opts into bounded anonymous sample answers. With generation disabled, ingestion/search work and answers report `provider_unavailable`.
 
 The verified Qwen 7B download is about 4.68 GB; Ollama reported about 4.74 GB loaded model memory at 4096 context. Real MiniLM/reranker process RSS was roughly 0.55–0.62 GB in the measured runs. This fits the supplied machine; keep inference concurrency bounded. The smaller 3B model failed the supported/conflicting development scenarios, and those failures are preserved. CPU-compatible retrieval is the default; the Ollama Metal runtime handles local generation.
 
@@ -95,7 +103,7 @@ curl http://127.0.0.1:8001/api/v1/readiness
 docker compose ps
 ```
 
-Open <http://127.0.0.1:8001>. The nonroot API and separate worker use PostgreSQL/pgvector on loopback port 5433 and persistent named volumes. Default Compose uses fixture models/answers and loads `.env` administrator credentials. Migrations and sample seeding run before services start. `docker compose down` retains volumes; `down -v` deletes them. Local Compose was actually built, started and checked. See [deployment](docs/deployment.md) for real-model/local-provider settings, backups, environment variables and the unverified free Render sample blueprint.
+Open <http://127.0.0.1:8001>. The nonroot API and separate worker use PostgreSQL/pgvector on loopback port 5433 and persistent named volumes. Default Compose uses fixture models/answers and loads `.env` administrator credentials. Migrations and sample seeding run before services start. `docker compose down` retains volumes; `down -v` deletes them. Local Compose was actually built, started and checked. See [deployment](docs/deployment.md) for real-model/local-provider settings, backups, environment variables and the free Render hosting configuration and its limits.
 
 ## Reproduce checks and experiments
 
@@ -127,7 +135,7 @@ uv run python scripts/load_test.py --url http://127.0.0.1:8002
 uv run python scripts/profile_ingestion.py
 ```
 
-Experiments save manifests, reports and per-question JSONL under ignored `outputs/<run_id>/`, and register summaries in the database. Configuration, dataset/source/split/lock hashes, model commits, prompt version, corpus snapshot, hardware and available timing/usage are recorded. The published original runs preceded the first repository commit and honestly record `uncommitted-initial-build`; later reproduction runs record their commit. GitHub Actions is configured for deterministic checks and a separate PostgreSQL job; remote Actions execution is unverified.
+Experiments save manifests, reports and per-question JSONL under ignored `outputs/<run_id>/`, and register summaries in the database. Configuration, dataset/source/split/lock hashes, model commits, prompt version, corpus snapshot, hardware and available timing/usage are recorded. The published original runs preceded the first repository commit and honestly record `uncommitted-initial-build`; later reproduction runs record their commit. Both GitHub Actions jobs passed on the public repository. A fresh public clone also passed installation, checks, its small benchmark and actual demo startup; see the [acceptance evidence](docs/acceptance.md).
 
 ## Measured findings
 
@@ -141,6 +149,8 @@ Results on the 103 answerable final-comparison questions, top five passages:
 | MiniLM dense | 96.1% | 91.7% | 90.3% | 8.7 ms |
 | RRF hybrid | 92.2% | 90.8% | 90.3% | 4.3 ms |
 | Hybrid + cross-encoder | 97.1% | 93.2% | 92.2% | 121.1 ms |
+
+The separate free-host ONNX comparison had hybrid full-evidence@5 of 91.3% and warm p95 22.6 ms on this Mac. Its cross-encoder full-evidence@5 was 93.2%, but warm p95 was 1135 ms, exceeding the original 250 ms target. Hosted default retrieval remains hybrid. These are separate quantized-runtime observations, not remote performance predictions. [ONNX report and provenance](docs/evidence/retrieval-onnx/report.md).
 
 These are retrieval measurements on this dataset, not answer accuracy. All four methods met the documented development-derived full-evidence >=0.85 and warm p95 <=250 ms targets. [Full report, failures and paired uncertainty](docs/evidence/retrieval-test/report.md).
 

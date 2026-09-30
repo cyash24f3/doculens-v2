@@ -1,0 +1,42 @@
+{
+  "run_phase": "pre-commit hosted-runtime verification",
+  "base_commit": "b11753b8d409a3b89c4a40678a16b1990984bbc5",
+  "working_tree_dirty": true,
+  "runtime": "ONNX quantized upstream AVX2 artifact on macOS ARM64 CPU, one inference thread",
+  "no_remote_capacity_claim": true,
+  "source_hashes": {
+    "src/doculens/config.py": "d66372c1444bae2181efc987675ef3ec4e5ff90f4dfb01bd15bdbafd51a5a327",
+    "src/doculens/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/doculens/cli.py": "17707d7160e4db7903d987a4dd0ba8cb0ea7bc11f81714c5cac7fd71b8ce6448",
+    "src/doculens/errors.py": "19c851742eecdfd171962de03bba32a432c02ff56aad028ebcd67d8ffba12609",
+    "src/doculens/ingestion/worker.py": "fa4f97dcb08fb7ad433058e6b02f787815269dc9f77120505ea6cde5166d6b77",
+    "src/doculens/ingestion/chunking.py": "87150ca07857b301b5ea1a8398037a32f94d256e74e4659b59aa4401ff246344",
+    "src/doculens/ingestion/parsing.py": "77141accac06d96e190131b936fac20685b109380bc7b7970912d2de3027281b",
+    "src/doculens/observability/telemetry.py": "31d61907402a0c248fe5cd0640e5a2ac98f693ebb01352816ba13d8724041009",
+    "src/doculens/storage/models.py": "fe8a8853e9fd6ef4b3831b39cf43c05deaf3ce16e8416f9559720e163749a4ab",
+    "src/doculens/storage/database.py": "a60dbd01bed8f1b645b226a8fc1623f68ca618e8e64328dbea6dbfdf47c2f798",
+    "src/doculens/storage/repository.py": "f9ba8d965608bd9ce50062cb9ec403ec802c418b1b505cfdc9d063e1eb592fa1",
+    "src/doculens/retrieval/models.py": "eb67e24d9cf030799c968d17420919c331e205f1a6d2e5be95f987007d4ecd41",
+    "src/doculens/retrieval/onnx.py": "3669c8916b354bcdfd665d51c6fb3d5ca15d265d6b73e1cc7f1da9a57677e649",
+    "src/doculens/retrieval/search.py": "f4a65345f04e5ec008d9ba55cb71a5d822a3583e136a383a3154242f0c9c08c3",
+    "src/doculens/api/auth.py": "61e5d1c4abbbd648939c3621e2b0884cbd33f91cf26573b2b186ad20dce10681",
+    "src/doculens/api/quota.py": "94c26d619de7b4bae5f1117718dd0ce006ba328b3e4d5c27bf2ce60c94cdb337",
+    "src/doculens/api/contracts.py": "6fa5480820984fcd470b1f4391afe7f685c0fef0939c78766668089ecd7e68b4",
+    "src/doculens/api/app.py": "8e18da7e60a8ab85fbb26ba6165833bd4bad1b52a72f08bc4e6914062f2d026e",
+    "src/doculens/evaluation/metrics.py": "68b9a5215c0b1e4cca451f85c76fb3bcf4b86ba25c9572834b4611cdfc56f5f4",
+    "src/doculens/evaluation/runner.py": "c550e2a3c033b98e0493098681246094d41e47abe9bf757672811ea3119d2628",
+    "src/doculens/evaluation/answers.py": "4d078e6c47be0b2e2782aebea84994048228462e79e3fb6b2a7b825675fe62ab",
+    "src/doculens/generation/fixture.py": "2383d589f6f84c57697c86f2100243e06925213cd6f5e8cc6ba2418a6c55c6be",
+    "src/doculens/generation/service.py": "77c835f5385ba2e30479d930efe1964fb9b4ad5c186995291f216ac53e26b519",
+    "src/doculens/generation/provider.py": "0637ec520959fa835a229f29da2df552ca4d3b35c6da0f1fa1bfa02ae2de34e3",
+    "src/doculens/generation/context.py": "488699a29b55b8261dc0564dde7833c14e22bd12fbd7373e6110cca3e62d04a8",
+    "src/doculens/generation/contracts.py": "55b852c111ef94db3f4451c061adf529ea7df20b2dba13d0ede015b6ab5c7f15",
+    "src/doculens/generation/validation.py": "32cfce5200a64fd694a4751b512fba75a007627f45056b29c0701e32448237de"
+  },
+  "limitations": [
+    "Same disclosed AI-authored/split-exposed labels as original report; zero human review.",
+    "Quantized model results are separate from the Torch model report.",
+    "Cross-encoder warm p95 exceeds the original 250 ms target on this Mac; default hosted hybrid path excludes cross-encoder.",
+    "Real Groq smoke omitted accessories/proof-of-purchase conditions despite a valid citation. Structural validation is not semantic completeness."
+  ]
+}

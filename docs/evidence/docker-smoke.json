@@ -182,5 +182,209 @@
       "State": "running",
       "Status": "Up 3 minutes"
     }
+  ],
+  "image_identity_and_persistent_mounts": [
+    {
+      "name": "doculens-api-1",
+      "image_id": "sha256:ece3cb907caa06f33ee29b2558aff47d23ca6239d8b2b4207dfee41d90e47d56",
+      "user": "app",
+      "state": {
+        "Status": "running",
+        "Running": true,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 89423,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-09-30T12:20:26.046693546Z",
+        "FinishedAt": "2026-09-30T12:20:25.885386879Z",
+        "Health": {
+          "Status": "healthy",
+          "FailingStreak": 0,
+          "Log": [
+            {
+              "Start": "2026-09-30T12:25:54.56162942Z",
+              "End": "2026-09-30T12:25:54.78086017Z",
+              "ExitCode": 0,
+              "Output": ""
+            },
+            {
+              "Start": "2026-09-30T12:26:14.783806305Z",
+              "End": "2026-09-30T12:26:15.134561597Z",
+              "ExitCode": 0,
+              "Output": ""
+            },
+            {
+              "Start": "2026-09-30T12:26:35.139693633Z",
+              "End": "2026-09-30T12:26:35.527997217Z",
+              "ExitCode": 0,
+              "Output": ""
+            },
+            {
+              "Start": "2026-09-30T12:26:55.531006879Z",
+              "End": "2026-09-30T12:26:55.944586712Z",
+              "ExitCode": 0,
+              "Output": ""
+            },
+            {
+              "Start": "2026-09-30T12:27:15.946298139Z",
+              "End": "2026-09-30T12:27:16.227200722Z",
+              "ExitCode": 0,
+              "Output": ""
+            }
+          ]
+        }
+      },
+      "mounts": [
+        {
+          "Type": "volume",
+          "Name": "doculens_files",
+          "Destination": "/app/var"
+        },
+        {
+          "Type": "volume",
+          "Name": "doculens_models",
+          "Destination": "/home/app/.cache"
+        },
+        {
+          "Type": "volume",
+          "Name": "doculens_results",
+          "Destination": "/app/outputs"
+        }
+      ]
+    },
+    {
+      "name": "doculens-worker-1",
+      "image_id": "sha256:ece3cb907caa06f33ee29b2558aff47d23ca6239d8b2b4207dfee41d90e47d56",
+      "user": "app",
+      "state": {
+        "Status": "running",
+        "Running": true,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 86742,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-09-30T12:17:12.051970512Z",
+        "FinishedAt": "0001-01-01T00:00:00Z"
+      },
+      "mounts": [
+        {
+          "Type": "volume",
+          "Name": "doculens_results",
+          "Destination": "/app/outputs"
+        },
+        {
+          "Type": "volume",
+          "Name": "doculens_files",
+          "Destination": "/app/var"
+        },
+        {
+          "Type": "volume",
+          "Name": "doculens_models",
+          "Destination": "/home/app/.cache"
+        }
+      ]
+    },
+    {
+      "name": "doculens-db-1",
+      "image_id": "sha256:feb68f4f15446397d8cac7f4fe48fe4586de83160d1fc48b46283312d1a33966",
+      "user": "",
+      "state": {
+        "Status": "running",
+        "Running": true,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 2003,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-09-30T09:23:09.539883386Z",
+        "FinishedAt": "0001-01-01T00:00:00Z",
+        "Health": {
+          "Status": "healthy",
+          "FailingStreak": 0,
+          "Log": [
+            {
+              "Start": "2026-09-30T12:27:08.10747601Z",
+              "End": "2026-09-30T12:27:08.18699226Z",
+              "ExitCode": 0,
+              "Output": "/var/run/postgresql:5432 - accepting connections\n"
+            },
+            {
+              "Start": "2026-09-30T12:27:13.187416346Z",
+              "End": "2026-09-30T12:27:13.260156179Z",
+              "ExitCode": 0,
+              "Output": "/var/run/postgresql:5432 - accepting connections\n"
+            },
+            {
+              "Start": "2026-09-30T12:27:18.2638125Z",
+              "End": "2026-09-30T12:27:18.334499084Z",
+              "ExitCode": 0,
+              "Output": "/var/run/postgresql:5432 - accepting connections\n"
+            },
+            {
+              "Start": "2026-09-30T12:27:23.338373336Z",
+              "End": "2026-09-30T12:27:23.410886961Z",
+              "ExitCode": 0,
+              "Output": "/var/run/postgresql:5432 - accepting connections\n"
+            },
+            {
+              "Start": "2026-09-30T12:27:28.412438714Z",
+              "End": "2026-09-30T12:27:28.490315464Z",
+              "ExitCode": 0,
+              "Output": "/var/run/postgresql:5432 - accepting connections\n"
+            }
+          ]
+        }
+      },
+      "mounts": [
+        {
+          "Type": "volume",
+          "Name": "doculens_database",
+          "Destination": "/var/lib/postgresql/data"
+        }
+      ]
+    }
+  ],
+  "project_container_memory": [
+    {
+      "BlockIO": "1.27MB / 0B",
+      "CPUPerc": "0.21%",
+      "Container": "doculens-api-1",
+      "ID": "0b910e442462",
+      "MemPerc": "1.14%",
+      "MemUsage": "90.75MiB / 7.75GiB",
+      "Name": "doculens-api-1",
+      "NetIO": "149kB / 78.3kB",
+      "PIDs": "15"
+    },
+    {
+      "BlockIO": "0B / 0B",
+      "CPUPerc": "0.26%",
+      "Container": "doculens-worker-1",
+      "ID": "86b0097be739",
+      "MemPerc": "0.99%",
+      "MemUsage": "78.62MiB / 7.75GiB",
+      "Name": "doculens-worker-1",
+      "NetIO": "289kB / 372kB",
+      "PIDs": "10"
+    },
+    {
+      "BlockIO": "2.51MB / 89.9MB",
+      "CPUPerc": "0.05%",
+      "Container": "doculens-db-1",
+      "ID": "d2630d53c314",
+      "MemPerc": "0.49%",
+      "MemUsage": "38.89MiB / 7.75GiB",
+      "Name": "doculens-db-1",
+      "NetIO": "5.26MB / 13.8MB",
+      "PIDs": "8"
+    }
   ]
 }

@@ -12,7 +12,10 @@ class Settings(BaseSettings):
     database_url: str = "sqlite:///var/doculens.db"
     storage_dir: Path = Path("var/files")
     admin_token: str = ""
-    model_backend: Literal["sentence_transformer", "fixture"] = "sentence_transformer"
+    model_backend: Literal["sentence_transformer", "onnx", "fixture"] = "sentence_transformer"
+    onnx_filename: Literal["onnx/model.onnx", "onnx/model_quint8_avx2.onnx"] = (
+        "onnx/model_quint8_avx2.onnx"
+    )
     embedding_model: str = "sentence-transformers/all-MiniLM-L6-v2"
     embedding_revision: str = "1110a243fdf4706b3f48f1d95db1a4f5529b4d41"
     embedding_dimension: int = 384
@@ -40,12 +43,16 @@ class Settings(BaseSettings):
     provider_model_revision: str | None = None
     provider_token_parameter: Literal["max_tokens", "max_completion_tokens"] = "max_tokens"
     provider_temperature: float | None = Field(None, ge=0, le=2)
+    provider_reasoning_effort: Literal["low", "medium", "high"] | None = None
     provider_api_key: str = ""
     provider_timeout: float = Field(30, gt=0, le=120)
     provider_retries: int = Field(1, ge=0, le=2)
     provider_repair_attempts: int = Field(1, ge=0, le=1)
     provider_output_bytes: int = Field(20000, ge=100, le=100000)
     provider_concurrency: int = Field(2, ge=1, le=8)
+    public_provider_enabled: bool = False
+    public_answer_interval_seconds: int = Field(65, ge=60, le=3600)
+    public_answers_per_day: int = Field(30, ge=1, le=100)
     job_lease_seconds: int = Field(300, ge=5, le=3600)
     job_attempts: int = Field(3, ge=1, le=5)
     trace_retention_days: int = Field(7, ge=1, le=30)
@@ -75,12 +82,16 @@ class Settings(BaseSettings):
             raise ValueError("Provider mode requires provider_api_key and provider_model")
         if self.admin_token and len(self.admin_token) < 24:
             raise ValueError("admin_token must be at least 24 characters")
+        if self.public_provider_enabled and self.generation_mode != "provider":
+            raise ValueError("Public provider access requires provider generation mode")
         return self
 
     @cached_property
     def embedding_fingerprint(self) -> str:
         if self.model_backend == "fixture":
             return "fixture:sha256-token-hash:384:v1"
+        if self.model_backend == "onnx":
+            return f"{self.embedding_model}@{self.embedding_revision}:{self.onnx_filename}:384:normalized"
         return f"{self.embedding_model}@{self.embedding_revision}:384:normalized"
 
     def public_config(self) -> dict:

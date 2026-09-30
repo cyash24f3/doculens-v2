@@ -1,16 +1,39 @@
-# Free public FIXTURE demo only. Persistent full-stack operation is local Compose.
+# Genuine ONNX retrieval + free Groq answers. No private uploads on disposable disk.
 services:
   - type: web
-    name: doculens-demo
-    runtime: docker
+    name: doculens-v2
+    runtime: python
     plan: free
-    dockerfilePath: ./Dockerfile
-    dockerCommand: doculens demo --host 0.0.0.0 --port 10000
+    region: singapore
+    buildCommand: pip install --require-hashes -r requirements-render.lock && pip install --no-deps -e . && python scripts/prepare_render.py
+    startCommand: python scripts/prepare_render.py --serve
     healthCheckPath: /api/v1/readiness
     envVars:
-      - key: DOCULENS_MODEL_BACKEND
-        value: fixture
+      - key: PYTHON_VERSION
+        value: 3.12.13
       - key: DOCULENS_GENERATION_MODE
-        value: fixture
+        value: provider
+      - key: DOCULENS_PUBLIC_PROVIDER_ENABLED
+        value: "true"
+      - key: DOCULENS_PROVIDER_URL
+        value: https://api.groq.com/openai/v1
+      - key: DOCULENS_PROVIDER_MODEL
+        value: openai/gpt-oss-20b
+      - key: DOCULENS_PROVIDER_API_KEY
+        sync: false
+      - key: DOCULENS_PROVIDER_TOKEN_PARAMETER
+        value: max_completion_tokens
+      - key: DOCULENS_PROVIDER_REASONING_EFFORT
+        value: low
       - key: DOCULENS_ADMIN_TOKEN
         value: ""
+      - key: HF_HOME
+        value: .render-cache
+      - key: HF_HUB_DISABLE_TELEMETRY
+        value: "1"
+      - key: OPENBLAS_NUM_THREADS
+        value: "1"
+      - key: OMP_NUM_THREADS
+        value: "1"
+      - key: TOKENIZERS_PARALLELISM
+        value: "false"

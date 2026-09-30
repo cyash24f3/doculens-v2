@@ -57,6 +57,21 @@ class Models:
                     raise DomainError(
                         "tokenizer_offsets_unavailable", "A fast tokenizer is required", 503
                     )
+            elif self.settings.model_backend == "onnx":
+                from doculens.retrieval.onnx import OnnxEncoder
+
+                self.encoder = OnnxEncoder(
+                    self.settings.embedding_model,
+                    self.settings.embedding_revision,
+                    self.settings.onnx_filename,
+                    self.settings.cpu_threads,
+                )
+                if self.encoder.get_embedding_dimension() != self.dimension:
+                    raise DomainError(
+                        "embedding_dimension_mismatch",
+                        "ONNX model is incompatible with schema",
+                        503,
+                    )
             if self.settings.chunk_tokens > self.max_tokens - 2:
                 raise DomainError(
                     "chunk_model_limit", "Configured chunks exceed model input limit", 503
@@ -116,15 +131,25 @@ class Models:
             return [float(len(terms & set(tokenize(t)))) for t in passages]
         with self.load_lock:
             if self.reranker is None:
-                from sentence_transformers import CrossEncoder
-
                 started = time.perf_counter()
-                self.reranker = CrossEncoder(
-                    self.settings.reranker_model,
-                    revision=self.settings.reranker_revision,
-                    device="cpu",
-                    trust_remote_code=False,
-                )
+                if self.settings.model_backend == "onnx":
+                    from doculens.retrieval.onnx import OnnxReranker
+
+                    self.reranker = OnnxReranker(
+                        self.settings.reranker_model,
+                        self.settings.reranker_revision,
+                        self.settings.onnx_filename,
+                        self.settings.cpu_threads,
+                    )
+                else:
+                    from sentence_transformers import CrossEncoder
+
+                    self.reranker = CrossEncoder(
+                        self.settings.reranker_model,
+                        revision=self.settings.reranker_revision,
+                        device="cpu",
+                        trust_remote_code=False,
+                    )
                 self.memory.update(
                     reranker_load_seconds=time.perf_counter() - started,
                     rss_reranker_bytes=psutil.Process().memory_info().rss,

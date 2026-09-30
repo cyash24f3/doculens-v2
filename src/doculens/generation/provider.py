@@ -45,6 +45,8 @@ class CompatibleProvider:
         }
         if settings.provider_temperature is not None:
             payload["temperature"] = settings.provider_temperature
+        if settings.provider_reasoning_effort is not None:
+            payload["reasoning_effort"] = settings.provider_reasoning_effort
         with self.slots:
             for attempt in range(settings.provider_retries + 1):
                 try:

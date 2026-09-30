@@ -14,6 +14,7 @@ from sqlalchemy import func, select, text
 
 from doculens.api.auth import authenticate, bearer, permitted, require_admin
 from doculens.api.contracts import AnswerResponse, SearchRequest, SearchResponse, UploadResponse
+from doculens.api.quota import PublicAnswerQuota
 from doculens.config import Settings
 from doculens.errors import DomainError
 from doculens.generation.service import Answerer
@@ -39,6 +40,11 @@ def create_app(
     retriever = Retriever(settings, model_manager)
     generator = answerer or Answerer(settings)
     metrics = Metrics()
+    public_quota = PublicAnswerQuota(
+        settings.storage_dir / "public-quota.sqlite",
+        settings.public_answer_interval_seconds,
+        settings.public_answers_per_day,
+    )
     configure(settings.log_level)
 
     @asynccontextmanager
@@ -144,6 +150,14 @@ def create_app(
             "database": "available",
             "models": "initialized" if model_manager.loaded else "not_initialized",
             "generation_mode": settings.generation_mode,
+            "public_provider_enabled": settings.public_provider_enabled,
+            "public_answers_per_day": settings.public_answers_per_day
+            if settings.public_provider_enabled
+            else None,
+            "public_answer_interval_seconds": settings.public_answer_interval_seconds
+            if settings.public_provider_enabled
+            else None,
+            "admin_enabled": bool(settings.admin_token),
             "provider_connectivity": "unverified"
             if settings.generation_mode == "provider"
             else "not_applicable",
@@ -157,6 +171,10 @@ def create_app(
             "model_backend": settings.model_backend,
             "embedding_model": model_manager.fingerprint,
             "generation_mode": settings.generation_mode,
+            "public_provider_enabled": settings.public_provider_enabled,
+            "public_answers_per_day": settings.public_answers_per_day,
+            "public_answer_interval_seconds": settings.public_answer_interval_seconds,
+            "admin_enabled": bool(settings.admin_token),
             "default_method": "hybrid",
             "upload_limit_bytes": settings.upload_bytes,
             "fixture_questions": [
@@ -292,7 +310,11 @@ def create_app(
     def answer(body: SearchRequest, request: Request, admin: Admin):
         started = time.perf_counter()
         if settings.generation_mode == "provider":
-            require_admin(admin)
+            if not admin:
+                permitted(body.corpus, admin)
+                if not settings.public_provider_enabled:
+                    require_admin(admin)
+                public_quota.consume()
         result = run_search(body.model_copy(update={"top_k": settings.candidate_limit}), admin)
         response, trace = generator.answer(body.question, result, request.state.request_id)
         metrics.observe_generation(response["status"])

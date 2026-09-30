@@ -1,0 +1,472 @@
+{
+  "answer": {
+    "request_id": "groq-local-smoke",
+    "corpus_revision": 21,
+    "corpus_manifest": "2cfc4ee8e9a5cadaf063821df1cf2b125e9f503e093c41f1d797d811e24061ea",
+    "method": "reranked",
+    "generation_mode": "provider",
+    "model": "openai/gpt-oss-20b",
+    "answer": "Yes, you can return an opened product after 20 days because the policy allows returns of opened goods within 30 calendar days of delivery.",
+    "claims": [
+      {
+        "text": "Yes, you can return an opened product after 20 days because the policy allows returns of opened goods within 30 calendar days of delivery.",
+        "evidence_ids": [
+          "e2603ec999b022451b22abd67f1962fbd34c94feb40608008d9b9f4f7a0e8a72"
+        ],
+        "quotes": [
+          {
+            "evidence_id": "e2603ec999b022451b22abd67f1962fbd34c94feb40608008d9b9f4f7a0e8a72",
+            "span": "Opened products may be returned within 30 calendar days of delivery, provided all accessories and proof of purchase are included."
+          }
+        ]
+      }
+    ],
+    "citations": [
+      {
+        "id": "e2603ec999b022451b22abd67f1962fbd34c94feb40608008d9b9f4f7a0e8a72",
+        "document_id": "686d3c28-10cb-49a6-a700-cdbdd2e38c0d",
+        "version_id": "ec8e083e-f71c-495a-90cb-7494bc60396a",
+        "title": "Returns policy",
+        "version": "2026.1",
+        "effective_date": "2026-09-01",
+        "source_kind": "markdown",
+        "source_locator": null,
+        "text": "## Opened goods\n\nOpened products may be returned within 30 calendar days of delivery, provided all accessories and proof of purchase are included.",
+        "section": "Opened goods",
+        "page_start": null,
+        "page_end": null,
+        "start": 18,
+        "end": 164,
+        "ordinal": 1,
+        "token_count": 26,
+        "content_sha256": "3f03592658cf90bc75079eb24d1f93eb6ed5b87bb5257c96de82d6249e8f76f6",
+        "claim_indices": [
+          0
+        ],
+        "quotes": [
+          "Opened products may be returned within 30 calendar days of delivery, provided all accessories and proof of purchase are included."
+        ]
+      }
+    ],
+    "missing_information": [],
+    "timings": {
+      "lexical_ms": 10.541166993789375,
+      "dense_with_query_embedding_ms": 638.2526670058724,
+      "fusion_ms": 0.14362498768605292,
+      "reranking_ms": 932.0276660146192,
+      "retrieval_total_ms": 1581.0042090015486,
+      "generation_ms": 884.6141249814536
+    },
+    "usage": {
+      "calls": [
+        {
+          "queue_time": 0.394922462,
+          "prompt_tokens": 1703,
+          "prompt_time": 0.085619351,
+          "completion_tokens": 195,
+          "completion_time": 0.247701396,
+          "total_tokens": 1898,
+          "total_time": 0.333320747,
+          "completion_tokens_details": {
+            "reasoning_tokens": 21
+          }
+        }
+      ]
+    },
+    "structural_validation": "passed",
+    "status": "answered"
+  },
+  "trace": {
+    "prompt_version": "grounded-claims-v2",
+    "context_ids": [
+      "e2603ec999b022451b22abd67f1962fbd34c94feb40608008d9b9f4f7a0e8a72",
+      "6d985015df578a8923f9b6b33f63b8dac38966469b70d5b59817f6c96d1a68c8",
+      "a5043cc410093fd78667a23e1580c9b86819043752bb965323d91bb6bbd8ca8b",
+      "6e3d98f49d5b5b3abef0b0fc2efe2d0483720fa31bf6ac7eda631e73d05d9532",
+      "1086d514b6cd22f406047af329f54b55537c270c3cc66470ae831230b142e65a",
+      "2639b6cb281fce5782c53f321fc7ffa546705248114bd74587926380d19643a9"
+    ],
+    "context_excluded": [
+      {
+        "id": "500a443ef0234418a7d7198c0e40294a59075ac00ae0e15c27894920c9d64a46",
+        "reason": "document_diversity_limit"
+      },
+      {
+        "id": "0f78d972a018319d2c960e07fb9c58e9f0be566a10e70ff6cab3b1264e519948",
+        "reason": "document_diversity_limit"
+      },
+      {
+        "id": "02c8a3d672ddbde22761024d33535cbe8cde5056ea8bbfc0b167ec569865f808",
+        "reason": "chunk_limit"
+      },
+      {
+        "id": "485b5330304804fc9fd3e736e15ae1254aca54714cbdf906ec4140f23448a5af",
+        "reason": "chunk_limit"
+      },
+      {
+        "id": "808856393003b18d1f29821409094fe57151caabc1251e2b52ea0e9d6b088a99",
+        "reason": "document_diversity_limit"
+      },
+      {
+        "id": "e2f41dc45840022e624e6271ab3a4ad8894a81cfe16cba125e0ba8017bd6a251",
+        "reason": "chunk_limit"
+      },
+      {
+        "id": "d48b40860ea48fba0ba91a35e6ed62c28b5dc548b13807454374c28fa374f42e",
+        "reason": "chunk_limit"
+      },
+      {
+        "id": "0fe67b4f1f1bae82aecbef47d4c1ca921e18857c1d17b0c76caa8502bd51c2a3",
+        "reason": "chunk_limit"
+      },
+      {
+        "id": "8eb3161dca09128fa1e6b6aaa1fa3d2d4612a85dd73a7f91497217fe8a1705c1",
+        "reason": "chunk_limit"
+      },
+      {
+        "id": "8e70d2ca3f271e1b441049b3dbdcf35ce205a7e025a7ddc9c2770c72287f133c",
+        "reason": "chunk_limit"
+      },
+      {
+        "id": "ddafd8e576f6989177e391756f4b434251583e83069d4b690267185335bdc99b",
+        "reason": "chunk_limit"
+      },
+      {
+        "id": "6c4ee68a1f67a5ab1695e91181d8d6d331ee5dc0dd404e8ca39bf741b3737130",
+        "reason": "chunk_limit"
+      },
+      {
+        "id": "b7ad3df262414213071e4d49ab2d3901c406102ef356c1d1bb495a89df2c6920",
+        "reason": "chunk_limit"
+      },
+      {
+        "id": "8f25995d24d7ef1d240678a733e5b4d882555eaff1ec5ab31417b9ee80576c51",
+        "reason": "chunk_limit"
+      }
+    ],
+    "tokenizer": "cl100k_base",
+    "context_input_tokens_estimate": 1344,
+    "stages": {
+      "lexical": [
+        {
+          "id": "500a443ef0234418a7d7198c0e40294a59075ac00ae0e15c27894920c9d64a46",
+          "rank": 1,
+          "score": 12.922680491458014
+        },
+        {
+          "id": "2639b6cb281fce5782c53f321fc7ffa546705248114bd74587926380d19643a9",
+          "rank": 2,
+          "score": 11.419700775800177
+        },
+        {
+          "id": "e2603ec999b022451b22abd67f1962fbd34c94feb40608008d9b9f4f7a0e8a72",
+          "rank": 3,
+          "score": 9.849292136377672
+        },
+        {
+          "id": "d48b40860ea48fba0ba91a35e6ed62c28b5dc548b13807454374c28fa374f42e",
+          "rank": 4,
+          "score": 8.079989292944713
+        },
+        {
+          "id": "ddafd8e576f6989177e391756f4b434251583e83069d4b690267185335bdc99b",
+          "rank": 5,
+          "score": 7.115106236043636
+        },
+        {
+          "id": "0fe67b4f1f1bae82aecbef47d4c1ca921e18857c1d17b0c76caa8502bd51c2a3",
+          "rank": 6,
+          "score": 6.864375385028386
+        },
+        {
+          "id": "8eb3161dca09128fa1e6b6aaa1fa3d2d4612a85dd73a7f91497217fe8a1705c1",
+          "rank": 7,
+          "score": 6.829163956650659
+        },
+        {
+          "id": "6c4ee68a1f67a5ab1695e91181d8d6d331ee5dc0dd404e8ca39bf741b3737130",
+          "rank": 8,
+          "score": 6.641294431872456
+        },
+        {
+          "id": "0f78d972a018319d2c960e07fb9c58e9f0be566a10e70ff6cab3b1264e519948",
+          "rank": 9,
+          "score": 6.457560208983322
+        },
+        {
+          "id": "1086d514b6cd22f406047af329f54b55537c270c3cc66470ae831230b142e65a",
+          "rank": 10,
+          "score": 6.457560208983322
+        },
+        {
+          "id": "6e3d98f49d5b5b3abef0b0fc2efe2d0483720fa31bf6ac7eda631e73d05d9532",
+          "rank": 11,
+          "score": 6.457560208983322
+        },
+        {
+          "id": "96fdfd1c1105cda266a41197749d59cbb127d81aef60624d09bd2d302c149963",
+          "rank": 12,
+          "score": 6.457560208983322
+        },
+        {
+          "id": "e22501848e9e8c05ec0ec8303e6304dbccc08b479e12cfa814e062e776a6b7f1",
+          "rank": 13,
+          "score": 6.418470384117748
+        },
+        {
+          "id": "02c8a3d672ddbde22761024d33535cbe8cde5056ea8bbfc0b167ec569865f808",
+          "rank": 14,
+          "score": 5.922402713254114
+        },
+        {
+          "id": "233892e068a250f02bf05c48d34af02168300148b784c2a3a638453a3d32c921",
+          "rank": 15,
+          "score": 5.460820485127853
+        },
+        {
+          "id": "a5043cc410093fd78667a23e1580c9b86819043752bb965323d91bb6bbd8ca8b",
+          "rank": 16,
+          "score": 5.3315191514586395
+        },
+        {
+          "id": "21ffe1cc97e46494ca52015f7d588f0d3b97a4c501a6706f806a4c191eb9f9fe",
+          "rank": 17,
+          "score": 5.2956004041043006
+        },
+        {
+          "id": "dd4e64bc09f9efbf48aa310cec83303067585ccf7dcd0405189e42874b9635b5",
+          "rank": 18,
+          "score": 4.604676527677492
+        },
+        {
+          "id": "16ef917ffded58a5279fde065be439eb7d611bb5aafae18fa75cc82e5cd8f376",
+          "rank": 19,
+          "score": 4.547451817275322
+        },
+        {
+          "id": "e5b10a396a33724ff4f0bfd1e95887806296e9deadf8c2955f6fe6e8d68a64ce",
+          "rank": 20,
+          "score": 4.491631970388433
+        }
+      ],
+      "dense": [
+        {
+          "id": "e2603ec999b022451b22abd67f1962fbd34c94feb40608008d9b9f4f7a0e8a72",
+          "rank": 1,
+          "score": 0.7493836879730225
+        },
+        {
+          "id": "6d985015df578a8923f9b6b33f63b8dac38966469b70d5b59817f6c96d1a68c8",
+          "rank": 2,
+          "score": 0.6136231422424316
+        },
+        {
+          "id": "a5043cc410093fd78667a23e1580c9b86819043752bb965323d91bb6bbd8ca8b",
+          "rank": 3,
+          "score": 0.3965741693973541
+        },
+        {
+          "id": "8e70d2ca3f271e1b441049b3dbdcf35ce205a7e025a7ddc9c2770c72287f133c",
+          "rank": 4,
+          "score": 0.36607277393341064
+        },
+        {
+          "id": "1086d514b6cd22f406047af329f54b55537c270c3cc66470ae831230b142e65a",
+          "rank": 5,
+          "score": 0.3346027135848999
+        },
+        {
+          "id": "808856393003b18d1f29821409094fe57151caabc1251e2b52ea0e9d6b088a99",
+          "rank": 6,
+          "score": 0.33146941661834717
+        },
+        {
+          "id": "b7ad3df262414213071e4d49ab2d3901c406102ef356c1d1bb495a89df2c6920",
+          "rank": 7,
+          "score": 0.32954347133636475
+        },
+        {
+          "id": "8f25995d24d7ef1d240678a733e5b4d882555eaff1ec5ab31417b9ee80576c51",
+          "rank": 8,
+          "score": 0.32928189635276794
+        },
+        {
+          "id": "0f78d972a018319d2c960e07fb9c58e9f0be566a10e70ff6cab3b1264e519948",
+          "rank": 9,
+          "score": 0.3266463279724121
+        },
+        {
+          "id": "e2f41dc45840022e624e6271ab3a4ad8894a81cfe16cba125e0ba8017bd6a251",
+          "rank": 10,
+          "score": 0.322878897190094
+        },
+        {
+          "id": "485b5330304804fc9fd3e736e15ae1254aca54714cbdf906ec4140f23448a5af",
+          "rank": 11,
+          "score": 0.3139485716819763
+        },
+        {
+          "id": "02c8a3d672ddbde22761024d33535cbe8cde5056ea8bbfc0b167ec569865f808",
+          "rank": 12,
+          "score": 0.3132261037826538
+        },
+        {
+          "id": "dc6ac4faf1fdabebeffcf6624acc792be98fd21bd93e94d693ad7c17a505cab1",
+          "rank": 13,
+          "score": 0.31036925315856934
+        },
+        {
+          "id": "500a443ef0234418a7d7198c0e40294a59075ac00ae0e15c27894920c9d64a46",
+          "rank": 14,
+          "score": 0.30994713306427
+        },
+        {
+          "id": "ef0158e8f741fd634e2c926b50700120122327f7697890dcc9e6b640d225504a",
+          "rank": 15,
+          "score": 0.3070240318775177
+        },
+        {
+          "id": "a4150d175d77062004092182afc2e8c43c34f1d6f185117763abdd4cfaa29178",
+          "rank": 16,
+          "score": 0.2932051420211792
+        },
+        {
+          "id": "08a8e89a429b5e4b133c304b25161c5529c1931b9a76bb6fe0624c372ef64a82",
+          "rank": 17,
+          "score": 0.2907852232456207
+        },
+        {
+          "id": "2639b6cb281fce5782c53f321fc7ffa546705248114bd74587926380d19643a9",
+          "rank": 18,
+          "score": 0.2870545983314514
+        },
+        {
+          "id": "315a8c7e0a4f358dee924d63130fdef1545ff2d1dfe6cedc63647aaf2289321b",
+          "rank": 19,
+          "score": 0.280063271522522
+        },
+        {
+          "id": "072535050a63332567265358c45e9d97db25baa13eb2a157bfeaa1c2e8a9d0d2",
+          "rank": 20,
+          "score": 0.2727612257003784
+        }
+      ],
+      "fused": [
+        {
+          "id": "e2603ec999b022451b22abd67f1962fbd34c94feb40608008d9b9f4f7a0e8a72",
+          "rank": 1,
+          "score": 0.032266458495966696
+        },
+        {
+          "id": "500a443ef0234418a7d7198c0e40294a59075ac00ae0e15c27894920c9d64a46",
+          "rank": 2,
+          "score": 0.029906956136464335
+        },
+        {
+          "id": "1086d514b6cd22f406047af329f54b55537c270c3cc66470ae831230b142e65a",
+          "rank": 3,
+          "score": 0.02967032967032967
+        },
+        {
+          "id": "a5043cc410093fd78667a23e1580c9b86819043752bb965323d91bb6bbd8ca8b",
+          "rank": 4,
+          "score": 0.029030910609857977
+        },
+        {
+          "id": "0f78d972a018319d2c960e07fb9c58e9f0be566a10e70ff6cab3b1264e519948",
+          "rank": 5,
+          "score": 0.028985507246376812
+        },
+        {
+          "id": "2639b6cb281fce5782c53f321fc7ffa546705248114bd74587926380d19643a9",
+          "rank": 6,
+          "score": 0.028949545078577336
+        },
+        {
+          "id": "02c8a3d672ddbde22761024d33535cbe8cde5056ea8bbfc0b167ec569865f808",
+          "rank": 7,
+          "score": 0.027402402402402402
+        },
+        {
+          "id": "6d985015df578a8923f9b6b33f63b8dac38966469b70d5b59817f6c96d1a68c8",
+          "rank": 8,
+          "score": 0.016129032258064516
+        },
+        {
+          "id": "8e70d2ca3f271e1b441049b3dbdcf35ce205a7e025a7ddc9c2770c72287f133c",
+          "rank": 9,
+          "score": 0.015625
+        },
+        {
+          "id": "d48b40860ea48fba0ba91a35e6ed62c28b5dc548b13807454374c28fa374f42e",
+          "rank": 10,
+          "score": 0.015625
+        },
+        {
+          "id": "ddafd8e576f6989177e391756f4b434251583e83069d4b690267185335bdc99b",
+          "rank": 11,
+          "score": 0.015384615384615385
+        },
+        {
+          "id": "0fe67b4f1f1bae82aecbef47d4c1ca921e18857c1d17b0c76caa8502bd51c2a3",
+          "rank": 12,
+          "score": 0.015151515151515152
+        },
+        {
+          "id": "808856393003b18d1f29821409094fe57151caabc1251e2b52ea0e9d6b088a99",
+          "rank": 13,
+          "score": 0.015151515151515152
+        },
+        {
+          "id": "8eb3161dca09128fa1e6b6aaa1fa3d2d4612a85dd73a7f91497217fe8a1705c1",
+          "rank": 14,
+          "score": 0.014925373134328358
+        },
+        {
+          "id": "b7ad3df262414213071e4d49ab2d3901c406102ef356c1d1bb495a89df2c6920",
+          "rank": 15,
+          "score": 0.014925373134328358
+        },
+        {
+          "id": "6c4ee68a1f67a5ab1695e91181d8d6d331ee5dc0dd404e8ca39bf741b3737130",
+          "rank": 16,
+          "score": 0.014705882352941176
+        },
+        {
+          "id": "8f25995d24d7ef1d240678a733e5b4d882555eaff1ec5ab31417b9ee80576c51",
+          "rank": 17,
+          "score": 0.014705882352941176
+        },
+        {
+          "id": "e2f41dc45840022e624e6271ab3a4ad8894a81cfe16cba125e0ba8017bd6a251",
+          "rank": 18,
+          "score": 0.014285714285714285
+        },
+        {
+          "id": "485b5330304804fc9fd3e736e15ae1254aca54714cbdf906ec4140f23448a5af",
+          "rank": 19,
+          "score": 0.014084507042253521
+        },
+        {
+          "id": "6e3d98f49d5b5b3abef0b0fc2efe2d0483720fa31bf6ac7eda631e73d05d9532",
+          "rank": 20,
+          "score": 0.014084507042253521
+        }
+      ]
+    },
+    "validation_failures": [],
+    "provider_attempts": [
+      1
+    ]
+  },
+  "seconds": 1.1618127822875977,
+  "models": {
+    "encoder_load_seconds": 0.6181990829936694,
+    "rss_before_bytes": 115294208,
+    "rss_encoder_bytes": 210436096,
+    "dimension": 384,
+    "max_sequence_length": 256,
+    "reranker_load_seconds": 0.2490853340132162,
+    "rss_reranker_bytes": 262733824
+  }
+}
