@@ -18,7 +18,7 @@ services:
       - key: DOCULENS_PROVIDER_URL
         value: https://api.groq.com/openai/v1
       - key: DOCULENS_PROVIDER_MODEL
-        value: openai/gpt-oss-20b
+        value: openai/gpt-oss-120b
       - key: DOCULENS_PROVIDER_API_KEY
         sync: false
       - key: DOCULENS_PROVIDER_TOKEN_PARAMETER

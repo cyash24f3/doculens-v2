@@ -1,0 +1,844 @@
+{
+  "url": "https://yash-doculens-v2.onrender.com",
+  "checked_at": "2026-09-30T13:17:40.463923+00:00",
+  "answers": [
+    {
+      "case": "answer",
+      "response": {
+        "request_id": "1760be84-9b1b-4c90-ae2b-919cb35110c8",
+        "corpus_revision": 21,
+        "corpus_manifest": "311a4e0ab9467984e4540b145cb86553a36c2ae58e154455ca36bbfd1d4d333a",
+        "method": "hybrid",
+        "generation_mode": "provider",
+        "model": "openai/gpt-oss-20b",
+        "status": "answered",
+        "answer": "Yes, you can return an opened product after 20 days because the return window for opened goods is 30 calendar days from delivery.",
+        "claims": [
+          {
+            "text": "Yes, you can return an opened product after 20 days because the return window for opened goods is 30 calendar days from delivery.",
+            "evidence_ids": [
+              "27e7ab973c2f88570620a34e125c35b19ba89c54582d2499d2d4bfd079a520e2"
+            ],
+            "quotes": [
+              {
+                "evidence_id": "27e7ab973c2f88570620a34e125c35b19ba89c54582d2499d2d4bfd079a520e2",
+                "span": "Opened products may be returned within 30 calendar days of delivery, provided all accessories and proof of purchase are included."
+              }
+            ]
+          }
+        ],
+        "citations": [
+          {
+            "id": "27e7ab973c2f88570620a34e125c35b19ba89c54582d2499d2d4bfd079a520e2",
+            "document_id": "71e9e5e9-8406-4037-b24a-678e6d6e48e8",
+            "version_id": "92bc8293-1648-4d5c-a077-8203ecf988f5",
+            "title": "Returns policy",
+            "version": "2026.1",
+            "effective_date": "2026-09-01",
+            "source_kind": "markdown",
+            "source_locator": null,
+            "text": "## Opened goods\n\nOpened products may be returned within 30 calendar days of delivery, provided all accessories and proof of purchase are included.",
+            "section": "Opened goods",
+            "page_start": null,
+            "page_end": null,
+            "start": 18,
+            "end": 164,
+            "ordinal": 1,
+            "token_count": 26,
+            "content_sha256": "3f03592658cf90bc75079eb24d1f93eb6ed5b87bb5257c96de82d6249e8f76f6",
+            "claim_indices": [
+              0
+            ],
+            "quotes": [
+              "Opened products may be returned within 30 calendar days of delivery, provided all accessories and proof of purchase are included."
+            ]
+          }
+        ],
+        "missing_information": [],
+        "timings": {
+          "lexical_ms": 1.0169288143515587,
+          "dense_with_query_embedding_ms": 92.45734009891748,
+          "fusion_ms": 0.09768176823854446,
+          "retrieval_total_ms": 93.59732083976269,
+          "generation_ms": 834.468855522573,
+          "total_ms": 6050.528799183667
+        },
+        "usage": {
+          "calls": [
+            {
+              "queue_time": 0.319505434,
+              "prompt_tokens": 1700,
+              "prompt_time": 0.115902551,
+              "completion_tokens": 197,
+              "completion_time": 0.211127606,
+              "total_tokens": 1897,
+              "total_time": 0.327030157,
+              "completion_tokens_details": {
+                "reasoning_tokens": 26
+              }
+            }
+          ]
+        },
+        "structural_validation": "passed"
+      }
+    },
+    {
+      "case": "missing",
+      "response": {
+        "request_id": "2e392c65-3abb-4afe-a3cc-6efa743d79c8",
+        "corpus_revision": 21,
+        "corpus_manifest": "311a4e0ab9467984e4540b145cb86553a36c2ae58e154455ca36bbfd1d4d333a",
+        "method": "hybrid",
+        "generation_mode": "provider",
+        "model": "openai/gpt-oss-20b",
+        "status": "insufficient_evidence",
+        "answer": "The selected documents do not provide enough evidence.",
+        "claims": [],
+        "citations": [],
+        "missing_information": [
+          "Information about delivery guarantees to Antarctica"
+        ],
+        "timings": {
+          "lexical_ms": 1.0965904220938683,
+          "dense_with_query_embedding_ms": 10.247926227748394,
+          "fusion_ms": 0.09859167039394379,
+          "retrieval_total_ms": 11.471848003566265,
+          "generation_ms": 603.374102152884,
+          "total_ms": 1201.4692584052682
+        },
+        "usage": {
+          "calls": [
+            {
+              "queue_time": 0.393143951,
+              "prompt_tokens": 1693,
+              "prompt_time": 0.050874717,
+              "completion_tokens": 56,
+              "completion_time": 0.057247017,
+              "total_tokens": 1749,
+              "total_time": 0.108121734,
+              "prompt_tokens_details": {
+                "cached_tokens": 1024
+              },
+              "completion_tokens_details": {
+                "reasoning_tokens": 20
+              }
+            }
+          ]
+        },
+        "structural_validation": "passed"
+      }
+    },
+    {
+      "case": "conflict",
+      "response": {
+        "request_id": "052f3ce4-4f78-4a95-a823-ebe38cc2c506",
+        "corpus_revision": 21,
+        "corpus_manifest": "311a4e0ab9467984e4540b145cb86553a36c2ae58e154455ca36bbfd1d4d333a",
+        "method": "hybrid",
+        "generation_mode": "provider",
+        "model": "openai/gpt-oss-20b",
+        "status": "answered",
+        "answer": "The Harbor H10 warranty covers manufacturing defects for 24 months from purchase under the Harbor service warranty.\n\nThe Harbor H10 warranty covers manufacturing defects for 12 months from purchase under the Harbor retail warranty.",
+        "claims": [
+          {
+            "text": "The Harbor H10 warranty covers manufacturing defects for 24 months from purchase under the Harbor service warranty.",
+            "evidence_ids": [
+              "70d720f82d32eafcf433cd3e7c051872765b5b1ac43cc3dbebdbbcd0ac6972a8"
+            ],
+            "quotes": [
+              {
+                "evidence_id": "70d720f82d32eafcf433cd3e7c051872765b5b1ac43cc3dbebdbbcd0ac6972a8",
+                "span": "The Harbor H10 warranty covers manufacturing defects for 24 months from purchase."
+              }
+            ]
+          },
+          {
+            "text": "The Harbor H10 warranty covers manufacturing defects for 12 months from purchase under the Harbor retail warranty.",
+            "evidence_ids": [
+              "c1e9e43733ea4097e410d3cddb3ebc2465b8e9f7cad8d1cd435d66e40e7def62"
+            ],
+            "quotes": [
+              {
+                "evidence_id": "c1e9e43733ea4097e410d3cddb3ebc2465b8e9f7cad8d1cd435d66e40e7def62",
+                "span": "The Harbor H10 warranty covers manufacturing defects for 12 months from purchase."
+              }
+            ]
+          }
+        ],
+        "citations": [
+          {
+            "id": "70d720f82d32eafcf433cd3e7c051872765b5b1ac43cc3dbebdbbcd0ac6972a8",
+            "document_id": "b01d71fb-34ef-441c-965b-4b79f2761331",
+            "version_id": "856e15fb-c87e-42ac-9483-0d51a58f1a80",
+            "title": "Harbor service warranty",
+            "version": "2026.1",
+            "effective_date": "2026-09-01",
+            "source_kind": "markdown",
+            "source_locator": null,
+            "text": "# Harbor service warranty\n\nThe Harbor H10 warranty covers manufacturing defects for 24 months from purchase.",
+            "section": "Harbor service warranty",
+            "page_start": null,
+            "page_end": null,
+            "start": 0,
+            "end": 108,
+            "ordinal": 0,
+            "token_count": 20,
+            "content_sha256": "be89505d096547a93cb5f877d3b6e700b26b6105b52a3f28ede490aa31e0016f",
+            "claim_indices": [
+              0
+            ],
+            "quotes": [
+              "The Harbor H10 warranty covers manufacturing defects for 24 months from purchase."
+            ]
+          },
+          {
+            "id": "c1e9e43733ea4097e410d3cddb3ebc2465b8e9f7cad8d1cd435d66e40e7def62",
+            "document_id": "17cb5b71-e756-445e-b76a-cd0632d9e3fd",
+            "version_id": "65a05993-66ee-475a-9feb-38f357338f9d",
+            "title": "Harbor retail warranty",
+            "version": "2026.1",
+            "effective_date": "2026-09-01",
+            "source_kind": "markdown",
+            "source_locator": null,
+            "text": "# Harbor retail warranty\n\nThe Harbor H10 warranty covers manufacturing defects for 12 months from purchase.",
+            "section": "Harbor retail warranty",
+            "page_start": null,
+            "page_end": null,
+            "start": 0,
+            "end": 107,
+            "ordinal": 0,
+            "token_count": 20,
+            "content_sha256": "8727eee0d89ebfac6228f2a0c90f622ef097c0f93975b87153ddca6e946c27b0",
+            "claim_indices": [
+              1
+            ],
+            "quotes": [
+              "The Harbor H10 warranty covers manufacturing defects for 12 months from purchase."
+            ]
+          }
+        ],
+        "missing_information": [],
+        "timings": {
+          "lexical_ms": 1.1365506798028946,
+          "dense_with_query_embedding_ms": 85.38051415234804,
+          "fusion_ms": 0.16160309314727783,
+          "retrieval_total_ms": 86.71598881483078,
+          "generation_ms": 865.4301147907972,
+          "total_ms": 1414.7923216223717
+        },
+        "usage": {
+          "calls": [
+            {
+              "queue_time": 0.308348401,
+              "prompt_tokens": 1718,
+              "prompt_time": 0.086099081,
+              "completion_tokens": 345,
+              "completion_time": 0.368450995,
+              "total_tokens": 2063,
+              "total_time": 0.454550076,
+              "completion_tokens_details": {
+                "reasoning_tokens": 50
+              }
+            }
+          ]
+        },
+        "structural_validation": "passed"
+      }
+    }
+  ],
+  "javascript_errors": [],
+  "health": {
+    "status": "ok",
+    "service": "doculens"
+  },
+  "readiness": {
+    "status": "ready",
+    "database": "available",
+    "models": "initialized",
+    "generation_mode": "provider",
+    "public_provider_enabled": true,
+    "public_answers_per_day": 30,
+    "public_answer_interval_seconds": 65,
+    "admin_enabled": false,
+    "provider_connectivity": "unverified"
+  },
+  "config": {
+    "model_backend": "onnx",
+    "embedding_model": "sentence-transformers/all-MiniLM-L6-v2@1110a243fdf4706b3f48f1d95db1a4f5529b4d41:onnx/model_quint8_avx2.onnx:384:normalized",
+    "generation_mode": "provider",
+    "public_provider_enabled": true,
+    "public_answers_per_day": 30,
+    "public_answer_interval_seconds": 65,
+    "admin_enabled": false,
+    "default_method": "hybrid",
+    "upload_limit_bytes": 10485760,
+    "fixture_questions": [
+      "Can I return an opened product after 20 days?",
+      "Is delivery to Antarctica guaranteed?",
+      "How long is the Harbor warranty?"
+    ]
+  },
+  "active_documents": 20,
+  "anonymous_denials": {
+    "documents?corpus=private": 403,
+    "developer/metrics": 403,
+    "developer/experiments": 403,
+    "private_answer": 403,
+    "upload": 403
+  },
+  "retrieval": {
+    "bm25": {
+      "request_id": "079fb387-1fd6-410e-bfea-864a6cd6e034",
+      "corpus_revision": 21,
+      "corpus_manifest": "311a4e0ab9467984e4540b145cb86553a36c2ae58e154455ca36bbfd1d4d333a",
+      "method": "bm25",
+      "embedding_model": "sentence-transformers/all-MiniLM-L6-v2@1110a243fdf4706b3f48f1d95db1a4f5529b4d41:onnx/model_quint8_avx2.onnx:384:normalized",
+      "results": [
+        {
+          "evidence": {
+            "id": "eaf408fcd9562ca926f1bca84abceb378f68e39e9982e9f578c7dcf52d94dbdb",
+            "document_id": "2e025cbf-79ab-4ffd-a8e4-a2e23c8fa61a",
+            "version_id": "23cc3a7b-7b27-45a2-aa73-68eccb24edba",
+            "title": "Beacon Wi-Fi troubleshooting",
+            "version": "2026.1",
+            "effective_date": "2026-09-01",
+            "source_kind": "markdown",
+            "source_locator": null,
+            "text": "## Error E17\n\nFor error E17, verify the Wi-Fi password, disable MAC filtering temporarily, and repeat pairing within 3 metres of the router.",
+            "section": "Error E17",
+            "page_start": null,
+            "page_end": null,
+            "start": 144,
+            "end": 284,
+            "ordinal": 2,
+            "token_count": 34,
+            "content_sha256": "f2e0ad8b53fb325505357f5abbd34ee4b25a36e05e5647e39930f7d10829555a"
+          },
+          "rank": 1,
+          "score": 13.181532675321513,
+          "score_type": "bm25"
+        },
+        {
+          "evidence": {
+            "id": "f570c5d1b6be00ce9e15804dbf07fd760a33b378a9ce160880a9bda16a9af3d1",
+            "document_id": "bded9003-905a-4c0d-8354-d82e3bf8de45",
+            "version_id": "456d664c-f2a0-4659-9c64-c6dbb5bf9544",
+            "title": "Payment handling",
+            "version": "2026.1",
+            "effective_date": "2026-09-01",
+            "source_kind": "markdown",
+            "source_locator": null,
+            "text": "## Failure P402\n\nFor payment error P402, verify the billing address and ask the issuing bank whether international online payments are enabled.",
+            "section": "Failure P402",
+            "page_start": null,
+            "page_end": null,
+            "start": 128,
+            "end": 271,
+            "ordinal": 2,
+            "token_count": 29,
+            "content_sha256": "e0a9fc6671d4a4a23d7395ee72c091f3f26b4c4f5c76b00ebe3d0bb1fde68cd5"
+          },
+          "rank": 2,
+          "score": 9.757399647713928,
+          "score_type": "bm25"
+        },
+        {
+          "evidence": {
+            "id": "4a8ec7fce4ee4d5998097af1aabf4c73280e2e81aa086f1c1f342fdcb1f8549c",
+            "document_id": "34ddc5b4-1348-448e-9135-7e07e0922efe",
+            "version_id": "0582ecd1-86f9-4947-bb74-be744523c231",
+            "title": "Beacon B200 quick start PDF",
+            "version": "2026.1",
+            "effective_date": "2026-09-01",
+            "source_kind": "pdf",
+            "source_locator": null,
+            "text": "DOCULENS / FICTIONAL SAMPLE DOCUMENT\nBeacon B200 quick start\nConnect Beacon to a stable 5 V USB power supply.\nChoose a 2.4 GHz Wi-Fi network for pairing.\nHold the reset button for 12 seconds to clear saved credentials.\nThe amber light flashes when reset is complete.\nA reset retains installed firmware.\nVersion 2026.1 | AI-authored fixture, not human-reviewed | Page 1\n\nDOCULENS / FICTIONAL SAMPLE DOCUMENT\nPairing and escalation\nFor error E17, check the Wi-Fi password and MAC filtering.\nRepeat pairing within 3 metres of the router.\nAfter a failed reset, contact support with the device serial number,\nfirmware version, and router model.\nNever send your Wi-Fi password to support.\nVersion 2026.1 | AI-authored fixture, not human-reviewed | Page 2",
+            "section": null,
+            "page_start": 1,
+            "page_end": 2,
+            "start": 0,
+            "end": 748,
+            "ordinal": 0,
+            "token_count": 169,
+            "content_sha256": "5fcde28683d906ed4cb05b096c456e1488bacb675a6a43fced64adf6575fbb59"
+          },
+          "rank": 3,
+          "score": 8.380260842139448,
+          "score_type": "bm25"
+        },
+        {
+          "evidence": {
+            "id": "270b51b1b5d85268ae1137bd57aafd961a2113df439021d5324193d89123f8e3",
+            "document_id": "86864b62-f8e8-40de-b011-7f4988e7a01b",
+            "version_id": "8d02e6af-9198-4565-abd1-79582f7f2c90",
+            "title": "Shipping operations",
+            "version": "2026.1",
+            "effective_date": "2026-09-01",
+            "source_kind": "markdown",
+            "source_locator": null,
+            "text": "## Address changes\n\nAn address may be corrected before carrier collection by contacting support with the order number. After collection, contact the carrier.",
+            "section": "Address changes",
+            "page_start": null,
+            "page_end": null,
+            "start": 421,
+            "end": 578,
+            "ordinal": 4,
+            "token_count": 28,
+            "content_sha256": "5c305f47ad3d9b74677c822b62b4121ab69166b5a7d1d0ae2093943825cea8a3"
+          },
+          "rank": 4,
+          "score": 7.355775548242963,
+          "score_type": "bm25"
+        },
+        {
+          "evidence": {
+            "id": "1f4fcb014cefacadc928cf95404a9963dd3755adaf50141b22f342440b516bd3",
+            "document_id": "2e025cbf-79ab-4ffd-a8e4-a2e23c8fa61a",
+            "version_id": "23cc3a7b-7b27-45a2-aa73-68eccb24edba",
+            "title": "Beacon Wi-Fi troubleshooting",
+            "version": "2026.1",
+            "effective_date": "2026-09-01",
+            "source_kind": "markdown",
+            "source_locator": null,
+            "text": "# Beacon Wi-Fi troubleshooting",
+            "section": "Beacon Wi-Fi troubleshooting",
+            "page_start": null,
+            "page_end": null,
+            "start": 0,
+            "end": 30,
+            "ordinal": 0,
+            "token_count": 8,
+            "content_sha256": "3db847a8f395cdb3b308121352ab3febbe8228d13401923d52a5048d186041a4"
+          },
+          "rank": 5,
+          "score": 6.546331668960304,
+          "score_type": "bm25"
+        }
+      ],
+      "timings": {
+        "lexical_ms": 7.723919115960598,
+        "retrieval_total_ms": 7.733490318059921
+      }
+    },
+    "dense": {
+      "request_id": "18ac6956-d7f9-47b3-aa6f-182d4382f477",
+      "corpus_revision": 21,
+      "corpus_manifest": "311a4e0ab9467984e4540b145cb86553a36c2ae58e154455ca36bbfd1d4d333a",
+      "method": "dense",
+      "embedding_model": "sentence-transformers/all-MiniLM-L6-v2@1110a243fdf4706b3f48f1d95db1a4f5529b4d41:onnx/model_quint8_avx2.onnx:384:normalized",
+      "results": [
+        {
+          "evidence": {
+            "id": "1f4fcb014cefacadc928cf95404a9963dd3755adaf50141b22f342440b516bd3",
+            "document_id": "2e025cbf-79ab-4ffd-a8e4-a2e23c8fa61a",
+            "version_id": "23cc3a7b-7b27-45a2-aa73-68eccb24edba",
+            "title": "Beacon Wi-Fi troubleshooting",
+            "version": "2026.1",
+            "effective_date": "2026-09-01",
+            "source_kind": "markdown",
+            "source_locator": null,
+            "text": "# Beacon Wi-Fi troubleshooting",
+            "section": "Beacon Wi-Fi troubleshooting",
+            "page_start": null,
+            "page_end": null,
+            "start": 0,
+            "end": 30,
+            "ordinal": 0,
+            "token_count": 8,
+            "content_sha256": "3db847a8f395cdb3b308121352ab3febbe8228d13401923d52a5048d186041a4"
+          },
+          "rank": 1,
+          "score": 0.6005765199661255,
+          "score_type": "cosine_similarity"
+        },
+        {
+          "evidence": {
+            "id": "4a8ec7fce4ee4d5998097af1aabf4c73280e2e81aa086f1c1f342fdcb1f8549c",
+            "document_id": "34ddc5b4-1348-448e-9135-7e07e0922efe",
+            "version_id": "0582ecd1-86f9-4947-bb74-be744523c231",
+            "title": "Beacon B200 quick start PDF",
+            "version": "2026.1",
+            "effective_date": "2026-09-01",
+            "source_kind": "pdf",
+            "source_locator": null,
+            "text": "DOCULENS / FICTIONAL SAMPLE DOCUMENT\nBeacon B200 quick start\nConnect Beacon to a stable 5 V USB power supply.\nChoose a 2.4 GHz Wi-Fi network for pairing.\nHold the reset button for 12 seconds to clear saved credentials.\nThe amber light flashes when reset is complete.\nA reset retains installed firmware.\nVersion 2026.1 | AI-authored fixture, not human-reviewed | Page 1\n\nDOCULENS / FICTIONAL SAMPLE DOCUMENT\nPairing and escalation\nFor error E17, check the Wi-Fi password and MAC filtering.\nRepeat pairing within 3 metres of the router.\nAfter a failed reset, contact support with the device serial number,\nfirmware version, and router model.\nNever send your Wi-Fi password to support.\nVersion 2026.1 | AI-authored fixture, not human-reviewed | Page 2",
+            "section": null,
+            "page_start": 1,
+            "page_end": 2,
+            "start": 0,
+            "end": 748,
+            "ordinal": 0,
+            "token_count": 169,
+            "content_sha256": "5fcde28683d906ed4cb05b096c456e1488bacb675a6a43fced64adf6575fbb59"
+          },
+          "rank": 2,
+          "score": 0.5260049104690552,
+          "score_type": "cosine_similarity"
+        },
+        {
+          "evidence": {
+            "id": "eaf408fcd9562ca926f1bca84abceb378f68e39e9982e9f578c7dcf52d94dbdb",
+            "document_id": "2e025cbf-79ab-4ffd-a8e4-a2e23c8fa61a",
+            "version_id": "23cc3a7b-7b27-45a2-aa73-68eccb24edba",
+            "title": "Beacon Wi-Fi troubleshooting",
+            "version": "2026.1",
+            "effective_date": "2026-09-01",
+            "source_kind": "markdown",
+            "source_locator": null,
+            "text": "## Error E17\n\nFor error E17, verify the Wi-Fi password, disable MAC filtering temporarily, and repeat pairing within 3 metres of the router.",
+            "section": "Error E17",
+            "page_start": null,
+            "page_end": null,
+            "start": 144,
+            "end": 284,
+            "ordinal": 2,
+            "token_count": 34,
+            "content_sha256": "f2e0ad8b53fb325505357f5abbd34ee4b25a36e05e5647e39930f7d10829555a"
+          },
+          "rank": 3,
+          "score": 0.5046596527099609,
+          "score_type": "cosine_similarity"
+        },
+        {
+          "evidence": {
+            "id": "e9e82b6d7d9f49db33d63f9d5d68f2ee563253e92a05abbf3ebc795d634d0a12",
+            "document_id": "2e025cbf-79ab-4ffd-a8e4-a2e23c8fa61a",
+            "version_id": "23cc3a7b-7b27-45a2-aa73-68eccb24edba",
+            "title": "Beacon Wi-Fi troubleshooting",
+            "version": "2026.1",
+            "effective_date": "2026-09-01",
+            "source_kind": "markdown",
+            "source_locator": null,
+            "text": "## Reset\n\nHold the Beacon reset button for 12 seconds until the amber light flashes. A reset clears saved Wi-Fi credentials but retains firmware.",
+            "section": "Reset",
+            "page_start": null,
+            "page_end": null,
+            "start": 286,
+            "end": 431,
+            "ordinal": 3,
+            "token_count": 30,
+            "content_sha256": "dee31d694bfe9290950f39717a057b748eba67af10e25c7a1fdfadc438e2c038"
+          },
+          "rank": 4,
+          "score": 0.49765390157699585,
+          "score_type": "cosine_similarity"
+        },
+        {
+          "evidence": {
+            "id": "e0ff19283722c1d402b76f3f2e3bc5746873886ba8cf1d81c441f4f999a2a2fb",
+            "document_id": "2e025cbf-79ab-4ffd-a8e4-a2e23c8fa61a",
+            "version_id": "23cc3a7b-7b27-45a2-aa73-68eccb24edba",
+            "title": "Beacon Wi-Fi troubleshooting",
+            "version": "2026.1",
+            "effective_date": "2026-09-01",
+            "source_kind": "markdown",
+            "source_locator": null,
+            "text": "## Captive portal\n\nBeacon cannot authenticate through captive portals that require a browser sign-in. Use a private network without a captive portal.",
+            "section": "Captive portal",
+            "page_start": null,
+            "page_end": null,
+            "start": 433,
+            "end": 582,
+            "ordinal": 4,
+            "token_count": 28,
+            "content_sha256": "945cd796ede4e6d81aa103a4b7b83ac7b4603be3d046473cfdc8135260800ee9"
+          },
+          "rank": 5,
+          "score": 0.3539010286331177,
+          "score_type": "cosine_similarity"
+        }
+      ],
+      "timings": {
+        "dense_with_query_embedding_ms": 93.46812032163143,
+        "retrieval_total_ms": 93.48165057599545
+      }
+    },
+    "hybrid": {
+      "request_id": "7ef42a0f-85d3-446e-b55f-127a1001f814",
+      "corpus_revision": 21,
+      "corpus_manifest": "311a4e0ab9467984e4540b145cb86553a36c2ae58e154455ca36bbfd1d4d333a",
+      "method": "hybrid",
+      "embedding_model": "sentence-transformers/all-MiniLM-L6-v2@1110a243fdf4706b3f48f1d95db1a4f5529b4d41:onnx/model_quint8_avx2.onnx:384:normalized",
+      "results": [
+        {
+          "evidence": {
+            "id": "eaf408fcd9562ca926f1bca84abceb378f68e39e9982e9f578c7dcf52d94dbdb",
+            "document_id": "2e025cbf-79ab-4ffd-a8e4-a2e23c8fa61a",
+            "version_id": "23cc3a7b-7b27-45a2-aa73-68eccb24edba",
+            "title": "Beacon Wi-Fi troubleshooting",
+            "version": "2026.1",
+            "effective_date": "2026-09-01",
+            "source_kind": "markdown",
+            "source_locator": null,
+            "text": "## Error E17\n\nFor error E17, verify the Wi-Fi password, disable MAC filtering temporarily, and repeat pairing within 3 metres of the router.",
+            "section": "Error E17",
+            "page_start": null,
+            "page_end": null,
+            "start": 144,
+            "end": 284,
+            "ordinal": 2,
+            "token_count": 34,
+            "content_sha256": "f2e0ad8b53fb325505357f5abbd34ee4b25a36e05e5647e39930f7d10829555a"
+          },
+          "rank": 1,
+          "score": 0.032266458495966696,
+          "score_type": "rrf"
+        },
+        {
+          "evidence": {
+            "id": "4a8ec7fce4ee4d5998097af1aabf4c73280e2e81aa086f1c1f342fdcb1f8549c",
+            "document_id": "34ddc5b4-1348-448e-9135-7e07e0922efe",
+            "version_id": "0582ecd1-86f9-4947-bb74-be744523c231",
+            "title": "Beacon B200 quick start PDF",
+            "version": "2026.1",
+            "effective_date": "2026-09-01",
+            "source_kind": "pdf",
+            "source_locator": null,
+            "text": "DOCULENS / FICTIONAL SAMPLE DOCUMENT\nBeacon B200 quick start\nConnect Beacon to a stable 5 V USB power supply.\nChoose a 2.4 GHz Wi-Fi network for pairing.\nHold the reset button for 12 seconds to clear saved credentials.\nThe amber light flashes when reset is complete.\nA reset retains installed firmware.\nVersion 2026.1 | AI-authored fixture, not human-reviewed | Page 1\n\nDOCULENS / FICTIONAL SAMPLE DOCUMENT\nPairing and escalation\nFor error E17, check the Wi-Fi password and MAC filtering.\nRepeat pairing within 3 metres of the router.\nAfter a failed reset, contact support with the device serial number,\nfirmware version, and router model.\nNever send your Wi-Fi password to support.\nVersion 2026.1 | AI-authored fixture, not human-reviewed | Page 2",
+            "section": null,
+            "page_start": 1,
+            "page_end": 2,
+            "start": 0,
+            "end": 748,
+            "ordinal": 0,
+            "token_count": 169,
+            "content_sha256": "5fcde28683d906ed4cb05b096c456e1488bacb675a6a43fced64adf6575fbb59"
+          },
+          "rank": 2,
+          "score": 0.03200204813108039,
+          "score_type": "rrf"
+        },
+        {
+          "evidence": {
+            "id": "1f4fcb014cefacadc928cf95404a9963dd3755adaf50141b22f342440b516bd3",
+            "document_id": "2e025cbf-79ab-4ffd-a8e4-a2e23c8fa61a",
+            "version_id": "23cc3a7b-7b27-45a2-aa73-68eccb24edba",
+            "title": "Beacon Wi-Fi troubleshooting",
+            "version": "2026.1",
+            "effective_date": "2026-09-01",
+            "source_kind": "markdown",
+            "source_locator": null,
+            "text": "# Beacon Wi-Fi troubleshooting",
+            "section": "Beacon Wi-Fi troubleshooting",
+            "page_start": null,
+            "page_end": null,
+            "start": 0,
+            "end": 30,
+            "ordinal": 0,
+            "token_count": 8,
+            "content_sha256": "3db847a8f395cdb3b308121352ab3febbe8228d13401923d52a5048d186041a4"
+          },
+          "rank": 3,
+          "score": 0.03177805800756621,
+          "score_type": "rrf"
+        },
+        {
+          "evidence": {
+            "id": "f570c5d1b6be00ce9e15804dbf07fd760a33b378a9ce160880a9bda16a9af3d1",
+            "document_id": "bded9003-905a-4c0d-8354-d82e3bf8de45",
+            "version_id": "456d664c-f2a0-4659-9c64-c6dbb5bf9544",
+            "title": "Payment handling",
+            "version": "2026.1",
+            "effective_date": "2026-09-01",
+            "source_kind": "markdown",
+            "source_locator": null,
+            "text": "## Failure P402\n\nFor payment error P402, verify the billing address and ask the issuing bank whether international online payments are enabled.",
+            "section": "Failure P402",
+            "page_start": null,
+            "page_end": null,
+            "start": 128,
+            "end": 271,
+            "ordinal": 2,
+            "token_count": 29,
+            "content_sha256": "e0a9fc6671d4a4a23d7395ee72c091f3f26b4c4f5c76b00ebe3d0bb1fde68cd5"
+          },
+          "rank": 4,
+          "score": 0.030834914611005692,
+          "score_type": "rrf"
+        },
+        {
+          "evidence": {
+            "id": "e9e82b6d7d9f49db33d63f9d5d68f2ee563253e92a05abbf3ebc795d634d0a12",
+            "document_id": "2e025cbf-79ab-4ffd-a8e4-a2e23c8fa61a",
+            "version_id": "23cc3a7b-7b27-45a2-aa73-68eccb24edba",
+            "title": "Beacon Wi-Fi troubleshooting",
+            "version": "2026.1",
+            "effective_date": "2026-09-01",
+            "source_kind": "markdown",
+            "source_locator": null,
+            "text": "## Reset\n\nHold the Beacon reset button for 12 seconds until the amber light flashes. A reset clears saved Wi-Fi credentials but retains firmware.",
+            "section": "Reset",
+            "page_start": null,
+            "page_end": null,
+            "start": 286,
+            "end": 431,
+            "ordinal": 3,
+            "token_count": 30,
+            "content_sha256": "dee31d694bfe9290950f39717a057b748eba67af10e25c7a1fdfadc438e2c038"
+          },
+          "rank": 5,
+          "score": 0.029910714285714284,
+          "score_type": "rrf"
+        }
+      ],
+      "timings": {
+        "lexical_ms": 0.6810519844293594,
+        "dense_with_query_embedding_ms": 95.6477103754878,
+        "fusion_ms": 0.10055024176836014,
+        "retrieval_total_ms": 96.45537380129099
+      }
+    },
+    "reranked": {
+      "request_id": "6c42b70a-ef02-4c01-8935-936ad7ea558d",
+      "corpus_revision": 21,
+      "corpus_manifest": "311a4e0ab9467984e4540b145cb86553a36c2ae58e154455ca36bbfd1d4d333a",
+      "method": "reranked",
+      "embedding_model": "sentence-transformers/all-MiniLM-L6-v2@1110a243fdf4706b3f48f1d95db1a4f5529b4d41:onnx/model_quint8_avx2.onnx:384:normalized",
+      "results": [
+        {
+          "evidence": {
+            "id": "4a8ec7fce4ee4d5998097af1aabf4c73280e2e81aa086f1c1f342fdcb1f8549c",
+            "document_id": "34ddc5b4-1348-448e-9135-7e07e0922efe",
+            "version_id": "0582ecd1-86f9-4947-bb74-be744523c231",
+            "title": "Beacon B200 quick start PDF",
+            "version": "2026.1",
+            "effective_date": "2026-09-01",
+            "source_kind": "pdf",
+            "source_locator": null,
+            "text": "DOCULENS / FICTIONAL SAMPLE DOCUMENT\nBeacon B200 quick start\nConnect Beacon to a stable 5 V USB power supply.\nChoose a 2.4 GHz Wi-Fi network for pairing.\nHold the reset button for 12 seconds to clear saved credentials.\nThe amber light flashes when reset is complete.\nA reset retains installed firmware.\nVersion 2026.1 | AI-authored fixture, not human-reviewed | Page 1\n\nDOCULENS / FICTIONAL SAMPLE DOCUMENT\nPairing and escalation\nFor error E17, check the Wi-Fi password and MAC filtering.\nRepeat pairing within 3 metres of the router.\nAfter a failed reset, contact support with the device serial number,\nfirmware version, and router model.\nNever send your Wi-Fi password to support.\nVersion 2026.1 | AI-authored fixture, not human-reviewed | Page 2",
+            "section": null,
+            "page_start": 1,
+            "page_end": 2,
+            "start": 0,
+            "end": 748,
+            "ordinal": 0,
+            "token_count": 169,
+            "content_sha256": "5fcde28683d906ed4cb05b096c456e1488bacb675a6a43fced64adf6575fbb59"
+          },
+          "rank": 1,
+          "score": 0.8110606670379639,
+          "score_type": "fixture_term_overlap"
+        },
+        {
+          "evidence": {
+            "id": "eaf408fcd9562ca926f1bca84abceb378f68e39e9982e9f578c7dcf52d94dbdb",
+            "document_id": "2e025cbf-79ab-4ffd-a8e4-a2e23c8fa61a",
+            "version_id": "23cc3a7b-7b27-45a2-aa73-68eccb24edba",
+            "title": "Beacon Wi-Fi troubleshooting",
+            "version": "2026.1",
+            "effective_date": "2026-09-01",
+            "source_kind": "markdown",
+            "source_locator": null,
+            "text": "## Error E17\n\nFor error E17, verify the Wi-Fi password, disable MAC filtering temporarily, and repeat pairing within 3 metres of the router.",
+            "section": "Error E17",
+            "page_start": null,
+            "page_end": null,
+            "start": 144,
+            "end": 284,
+            "ordinal": 2,
+            "token_count": 34,
+            "content_sha256": "f2e0ad8b53fb325505357f5abbd34ee4b25a36e05e5647e39930f7d10829555a"
+          },
+          "rank": 2,
+          "score": 0.4748561978340149,
+          "score_type": "fixture_term_overlap"
+        },
+        {
+          "evidence": {
+            "id": "e9e82b6d7d9f49db33d63f9d5d68f2ee563253e92a05abbf3ebc795d634d0a12",
+            "document_id": "2e025cbf-79ab-4ffd-a8e4-a2e23c8fa61a",
+            "version_id": "23cc3a7b-7b27-45a2-aa73-68eccb24edba",
+            "title": "Beacon Wi-Fi troubleshooting",
+            "version": "2026.1",
+            "effective_date": "2026-09-01",
+            "source_kind": "markdown",
+            "source_locator": null,
+            "text": "## Reset\n\nHold the Beacon reset button for 12 seconds until the amber light flashes. A reset clears saved Wi-Fi credentials but retains firmware.",
+            "section": "Reset",
+            "page_start": null,
+            "page_end": null,
+            "start": 286,
+            "end": 431,
+            "ordinal": 3,
+            "token_count": 30,
+            "content_sha256": "dee31d694bfe9290950f39717a057b748eba67af10e25c7a1fdfadc438e2c038"
+          },
+          "rank": 3,
+          "score": 0.0006685994449071586,
+          "score_type": "fixture_term_overlap"
+        },
+        {
+          "evidence": {
+            "id": "1f4fcb014cefacadc928cf95404a9963dd3755adaf50141b22f342440b516bd3",
+            "document_id": "2e025cbf-79ab-4ffd-a8e4-a2e23c8fa61a",
+            "version_id": "23cc3a7b-7b27-45a2-aa73-68eccb24edba",
+            "title": "Beacon Wi-Fi troubleshooting",
+            "version": "2026.1",
+            "effective_date": "2026-09-01",
+            "source_kind": "markdown",
+            "source_locator": null,
+            "text": "# Beacon Wi-Fi troubleshooting",
+            "section": "Beacon Wi-Fi troubleshooting",
+            "page_start": null,
+            "page_end": null,
+            "start": 0,
+            "end": 30,
+            "ordinal": 0,
+            "token_count": 8,
+            "content_sha256": "3db847a8f395cdb3b308121352ab3febbe8228d13401923d52a5048d186041a4"
+          },
+          "rank": 4,
+          "score": 0.00025312500656582415,
+          "score_type": "fixture_term_overlap"
+        },
+        {
+          "evidence": {
+            "id": "f570c5d1b6be00ce9e15804dbf07fd760a33b378a9ce160880a9bda16a9af3d1",
+            "document_id": "bded9003-905a-4c0d-8354-d82e3bf8de45",
+            "version_id": "456d664c-f2a0-4659-9c64-c6dbb5bf9544",
+            "title": "Payment handling",
+            "version": "2026.1",
+            "effective_date": "2026-09-01",
+            "source_kind": "markdown",
+            "source_locator": null,
+            "text": "## Failure P402\n\nFor payment error P402, verify the billing address and ask the issuing bank whether international online payments are enabled.",
+            "section": "Failure P402",
+            "page_start": null,
+            "page_end": null,
+            "start": 128,
+            "end": 271,
+            "ordinal": 2,
+            "token_count": 29,
+            "content_sha256": "e0a9fc6671d4a4a23d7395ee72c091f3f26b4c4f5c76b00ebe3d0bb1fde68cd5"
+          },
+          "rank": 5,
+          "score": 6.637771002715454e-05,
+          "score_type": "fixture_term_overlap"
+        }
+      ],
+      "timings": {
+        "lexical_ms": 3.1707482412457466,
+        "dense_with_query_embedding_ms": 87.53647282719612,
+        "fusion_ms": 0.14500226825475693,
+        "reranking_ms": 5909.25335790962,
+        "retrieval_total_ms": 6000.14494266361
+      }
+    }
+  },
+  "source_search_without_provider": true,
+  "result": "failed: conflicting warranty values returned with answered status",
+  "answer_includes_conditions": false,
+  "quota_denial": {
+    "http_status": 429,
+    "error": {
+      "code": "public_answer_quota",
+      "message": "The shared free AI service is busy. Try again in 58 seconds."
+    },
+    "request_id": "b4716101-fd17-47a2-89ad-024ee747b9ad"
+  },
+  "tested_commit": "a355fe0726f5ae401f0654d86968a8df32d8a07a",
+  "notes": [
+    "Citation identity and exact quote checks passed; semantic conflict classification did not.",
+    "Actual remote response retained without alteration; prompt/model selection proceeds on the documented development demo cases."
+  ]
+}

@@ -14,7 +14,7 @@ class Claim(BaseModel):
     text: str = Field(
         min_length=1,
         max_length=2000,
-        description="A declarative answer statement supported by the evidence. Do not repeat the user question.",
+        description="A declarative answer statement supported by the evidence, including relevant conditions and exceptions. Do not repeat the user question.",
     )
     evidence_ids: list[str] = Field(max_length=8)
     quotes: list[Quote] = Field(max_length=8)

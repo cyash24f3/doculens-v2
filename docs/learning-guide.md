@@ -66,3 +66,12 @@ Latency includes queueing, database work, context, generation, retries and valid
 | Interface | four real-data views and source inspection | FastAPI/Jinja2, plain JavaScript |
 
 Debug one failing question with its JSONL row, resolved source spans, first-stage candidates, final context IDs and answer trace. Change one development parameter at a time and record why. Keep the fixture demonstration for wiring, and the real-model benchmark for retrieval claims.
+
+
+## Serving the free hosted demo
+
+`retrieval/onnx.py` runs the pinned upstream MiniLM exports without importing Torch. The encoder performs explicit attention-mask mean pooling and L2 normalization; the cross-encoder scores text pairs. Tokenizers supply original text offsets, and no silent truncation is enabled. Quantization changes vectors, so the ONNX filename is included in the embedding/pipeline fingerprint and the sample is re-derived. Its actual benchmark is published separately. The default hosted hybrid path keeps generation context grounded without loading the optional reranker for every UI request.
+
+`api/quota.py` reserves the shared anonymous budget atomically through SQLite. Private authorization is checked first. This process budget is not a permanent account quota after disposable disk replacement; Groq enforces the independent model-account quota. `scripts/prepare_render.py` explicitly disables public administration, seeds the same ingestion path, bounds threads/provider concurrency and serves the dynamic Render port. A live host cannot provide durable private uploads on a disposable free disk. This is why the public demo and persistent Compose workflow have different storage promises.
+
+An initial real hosted conflict response failed validation. One repair now explains the fixed structural failure, adds no raw model output and checks that feedback plus the completion bound still fits the context estimate. Tests show both successful recovery and abstention when no feedback budget remains. The failure and subsequent actual checks are kept as evidence; passing a few demo cases is not universal model correctness.

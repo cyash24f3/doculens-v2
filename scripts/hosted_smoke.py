@@ -118,7 +118,7 @@ def main():
                 (args.output / "smoke.json").write_text(json.dumps(report, indent=2) + "\n")
                 assert (
                     answer["generation_mode"] == "provider"
-                    and answer["model"] == "openai/gpt-oss-20b"
+                    and answer["model"] == "openai/gpt-oss-120b"
                 )
                 assert answer["status"] == expected_status, answer
                 expect(page.locator("#answer-region")).to_contain_text(

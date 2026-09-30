@@ -6,11 +6,15 @@ An evidence-grounded knowledge copilot for support documentation. Upload PDF, Ma
 
 Built and verified on a Mac M5 Air with 24 GB RAM and 1 TB storage. Development uses free software, downloaded local models and Docker. Hosted deployment uses Render Free, pinned quantized ONNX retrieval and Groq Free for real answers. No paid plan or paid provider was selected. Local fixture mode remains available for credential-free setup.
 
-![Actual running fixture demonstration](docs/evidence/screenshots/answer.png)
+![Actual hosted live AI demonstration](docs/evidence/hosted/answer.png)
 
-## Free hosted build
+## Live on the free tier
 
-`render.yaml` and `scripts/prepare_render.py` configure genuine MiniLM retrieval plus Groq `openai/gpt-oss-20b` answers on a free Python service. The key is a server-side secret, never a browser credential. Public sample answers share a 30-per-UTC-day limit and are at least 65 seconds apart. Local fixtures are not used in the hosted answer path.
+**[Open DocuLens](https://yash-doculens-v2.onrender.com)** · [Public source](https://github.com/cyash24f3/doculens-v2)
+
+`render.yaml` and `scripts/prepare_render.py` configure genuine MiniLM retrieval plus Groq `openai/gpt-oss-120b` answers on a free Python service. The key is a server-side secret, never a browser credential. Use **Search sources** at any time without an AI call. Public sample answers share a 30-per-UTC-day limit and are at least 65 seconds apart. Local fixtures are not used in the hosted answer path.
+
+The live UI and all four retrieval methods have been checked against the remote service; recorded responses/screenshots include known generation failures and condition omissions. [Hosted evidence](docs/evidence/hosted/).
 
 The free host serves the controlled sample corpus and disables administration/private uploads because its disk is disposable. Full versioned private-workspace operation is available through persistent Compose below. Render sleeps idle services and has a shared monthly workspace allowance; this is a portfolio demo, not a durable always-on production service. See [deployment details](docs/deployment.md).
 
@@ -126,6 +130,9 @@ uv run doculens benchmark --split test
 # Actual local generator and automated judge; requires provider settings above:
 uv run doculens evaluate-answers --split test --questions 12
 
+# Public deployment checks (three real calls; waits for shared free quota):
+uv run python scripts/hosted_smoke.py --url https://yash-doculens-v2.onrender.com
+
 # Running fixture API + matching worker + admin token; private corpus must be empty:
 uv run playwright install chromium
 uv run python scripts/browser_smoke.py --url http://127.0.0.1:8000
@@ -155,6 +162,8 @@ The separate free-host ONNX comparison had hybrid full-evidence@5 of 91.3% and w
 These are retrieval measurements on this dataset, not answer accuracy. All four methods met the documented development-derived full-evidence >=0.85 and warm p95 <=250 ms targets. [Full report, failures and paired uncertainty](docs/evidence/retrieval-test/report.md).
 
 The separate 12-question **actual local Qwen 7B** evaluation had 10 answerable/two missing questions, one unnecessary abstention, zero answered statuses on the two missing cases and zero technical failures. Generation p50/p95 were 20.2/31.5 seconds. The same-model automated judge gave mean correctness 1.83/2; this is exploratory self-judgment with no human calibration. A separate real API smoke returned a valid citation but omitted accessories/proof-of-purchase conditions in its answer, showing why citation validation alone is insufficient. [Answer report](docs/evidence/answer-test/report.md), [observed live API response](docs/evidence/provider-api-smoke.json).
+
+The hosted generator uses Groq GPT-OSS 120B with `grounded-claims-v3`. The 20B development requests exposed omitted conditions, an invalid conflict output and a conflict misclassified as answered; these failures are preserved. Hosted prompt/model selection uses the documented demo/development questions, and the earlier Qwen answer evaluation remains a distinct model/prompt result. No new independent answer-quality score or human review is claimed.
 
 The modest retrieval-only load test used 100 warm requests, concurrency two and one repeated question: no HTTP failures, p50 about 60 ms and p95 about 113 ms. It does not predict production capacity. [Raw load evidence](docs/evidence/load.json). Extraction/chunking/embedding/activation timings are separately recorded in [ingestion profiling](docs/evidence/ingestion-profile.json).
 

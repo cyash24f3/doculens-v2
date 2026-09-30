@@ -1,5 +1,7 @@
 # Six-minute demonstration
 
+For the deployed experience, open [the live service](https://yash-doculens-v2.onrender.com). It uses genuine ONNX retrieval and Groq answers. Use Search sources to inspect passages immediately; AI requests share a 65-second spacing/30-per-day budget. Test the three suggested questions with pauses and inspect the citations. Private upload/version administration and Developer belong to the persistent local Compose demonstration below. Recorded live browser evidence is in `evidence/hosted/`.
+
 Use the running sample at http://127.0.0.1:8000, or start `uv run doculens demo` and `uv run doculens worker --demo` in separate terminals. Set the local administrator token as described in the README. Keep the private corpus empty for the scripted sequence; do not remove someone else's documents. Everything below was exercised by the real browser smoke script, whose screenshots are in `evidence/screenshots/`.
 
 **0:00–0:40 — Set expectations.** Show the Fixture demonstration badge and 20 sample documents. Explain that the interface/API/storage run normally while this credential-free path uses named model test doubles and three scripted answers. The real-model benchmark and actual free Ollama evaluation are separate saved evidence. Point out that the independently sourced Python documentation complements fictional support policies.
