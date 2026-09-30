@@ -1,0 +1,48 @@
+{
+  "serviceId": "srv-daugf7flot8c73b22v90",
+  "url": "https://yash-doculens-v2.onrender.com",
+  "workspace": "cyash",
+  "plan": "free",
+  "region": "singapore",
+  "model": "openai/gpt-oss-120b",
+  "prompt_version": "grounded-claims-v3",
+  "deploy": {
+    "commit": {
+      "createdAt": "2026-09-30T18:28:06Z",
+      "id": "5f8c4626934203d6f5a5e7168d86a175a9fe2ef7",
+      "message": "Preserve eligibility conditions and unresolved conflicts in hosted generation"
+    },
+    "createdAt": "2026-09-30T18:28:52.065973Z",
+    "finishedAt": "2026-09-30T18:30:31.044095Z",
+    "id": "dep-daul9orncjis73fdam50",
+    "startedAt": "2026-09-30T18:28:52.01256Z",
+    "status": "live",
+    "trigger": "api",
+    "updatedAt": "2026-09-30T18:31:05.474676Z"
+  },
+  "runtime_error_logs": {
+    "hasMore": false,
+    "logs": [],
+    "nextEndTime": "2026-09-30T20:21:17.1446477Z",
+    "nextStartTime": "2026-09-30T18:30:00Z"
+  },
+  "metrics": {
+    "resourceId": "srv-daugf7flot8c73b22v90",
+    "timeRange": {
+      "start": "2026-09-30T20:15:00Z"
+    },
+    "metrics": [
+      {
+        "type": "memory_usage",
+        "data": []
+      },
+      {
+        "type": "memory_limit",
+        "data": []
+      }
+    ]
+  },
+  "sample_only": true,
+  "private_uploads": false,
+  "redeployment_note": "Environment update triggered the final build; the connector public URL connection did not deploy on a Git push alone. See deployment documentation."
+}

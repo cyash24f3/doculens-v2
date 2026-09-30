@@ -21,8 +21,8 @@ Status reflects execution, not implementation intent. All quality results are bo
 |---|---|---|
 | Real browser/public and admin integration | verified | `evidence/browser-smoke.json`, screenshots; administrator token kept private. |
 | Prompt-injection observation with a real local model | verified | `evidence/injection-smoke.json`; one controlled observation, not proof of immunity. |
-| Remote free Render deployment | implemented but unverified | Native Python ONNX/Groq configuration and local genuine inference verified; remote deployment is in progress. Ephemeral controlled sample; full persistent private operation verified locally. |
-| GitHub Actions on a pushed public repository | verified | Both deterministic and PostgreSQL jobs passed on commit `b11753b`: `evidence/github-ci.json`, [actual run](https://github.com/cyash24f3/doculens-v2/actions/runs/36714763343). The initial health-command quoting failure and fix are retained in the record. |
+| Remote free Render deployment | verified | [Live service](https://yash-doculens-v2.onrender.com); `evidence/hosted/{final-deployment,smoke}.json` and screenshots verify the actual free plan, real GPT-OSS 120B generation, four search methods, citations, missing/conflict statuses, quota/private denial and 390 px layout. Known condition omission remains disclosed; private storage stays in persistent Compose. |
+| GitHub Actions on a pushed public repository | verified | Both deterministic and PostgreSQL jobs passed on deployed code commit `5f8c462`: `evidence/github-ci-hosted.json`, [actual run](https://github.com/cyash24f3/doculens-v2/actions/runs/36758789464). Initial execution details remain in `evidence/github-ci.json`. The initial health-command quoting failure and fix are retained in the record. |
 | Human-authored fresh holdout/human semantic review | blocked | No independent human reviewer supplied. All source/question/answer review metadata says zero human review; automated same-model judge explicitly identified. |
 
 A controlled no-retrieval generation quality comparison was not performed. The app's empty-evidence short circuit is not a provider baseline.
